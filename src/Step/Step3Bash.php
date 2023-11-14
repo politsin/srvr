@@ -13,8 +13,8 @@ class Step3Bash extends Step0Base {
    * Run!
    */
   public function run(string $value, SymfonyStyle $io) : bool {
-    $this->exec(['rm', '/root/.bashrc']);
-    $this->exec(['rm', '/root/.bash_profile']);
+    $this->exec(['rm', '-f', '/root/.bashrc']);
+    $this->exec(['rm', '-f', '/root/.bash_profile']);
     $this->exec(['mkdir', '/root/.ssh']);
     foreach ($this->files() as $file => $source) {
       $data = file_get_contents($source);
