@@ -18,7 +18,9 @@ class Step3Bash extends Step0Base {
     $this->exec(['mkdir', '-p', '/root/.ssh']);
     foreach ($this->files() as $file => $source) {
       $data = file_get_contents($source);
-      $io->comment("{$source}");
+      $io->comment("File: {$file}");
+      $io->comment("From: {$source}");
+      $io->comment("Data:\n{$data}");
       $this->exec(['echo', "$data", '>', $file]);
     }
     $this->exec(['chmod', '700', '/root/.ssh']);
