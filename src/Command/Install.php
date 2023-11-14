@@ -63,7 +63,7 @@ class Install extends Command {
       'Step2Update' => "Update system",
       'Step2Util' => "Util",
       // 'Step3TimeZone' => "Set TimeZone",
-      // 'Step3Bash' => "Set Bash",
+      'Step3Bash' => "Set Bash",
       // 'Step3Swap' => "Set Swap",
       // 'Step4Util' => "Install utility",
       // 'Step5Docker' => "Install Docker",

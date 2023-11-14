@@ -20,6 +20,9 @@ class Step1Clear extends Step0Base {
       'exim4-config',
       'exim4-daemon-light',
       'apache2',
+      'vim',
+      'vim-common',
+      'vim-tiny',
     ]);
     $this->exec(['apt', 'autoremove', '-y']);
     return 1;
