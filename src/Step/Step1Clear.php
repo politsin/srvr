@@ -12,7 +12,6 @@ class Step1Clear extends Step0Base {
    */
   public function run(string $value) : bool {
 
-    $this->exec(['export', 'DEBIAN_FRONTEND=noninteractive']);
     $this->exec([
       'apt',
       'remove',
