@@ -13,5 +13,6 @@ wget https://getcomposer.org/installer -q -O composer-setup.php && \
     chmod +x /usr/local/bin/composer
 
 php --version
+export COMPOSER_ALLOW_SUPERUSER=1
 composer --version
 composer install -o --no-progress

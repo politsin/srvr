@@ -20,8 +20,9 @@ abstract class Step0Base {
    * Current data.
    */
   public function exec(array $cmd, float $timeout = 999999) : string {
-    // @todo export DEBIAN_FRONTEND=noninteractive
-    $process = new Process($cmd);
+    $process = new Process($cmd, NULL, [
+      'DEBIAN_FRONTEND' => 'noninteractive',
+    ]);
     $process->setTimeout($timeout);
     $process->run();
     if (!$process->isSuccessful()) {
