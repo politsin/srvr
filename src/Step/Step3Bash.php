@@ -19,7 +19,7 @@ class Step3Bash extends Step0Base {
     foreach ($this->files() as $file => $source) {
       $data = file_get_contents($source);
       $io->comment("{$source}");
-      $this->exec(['echo', "'$data'", '>', $file]);
+      $this->exec(['echo', "$data", '>', $file]);
     }
     $this->exec(['chmod', '700', '/root/.ssh']);
     $this->exec(['chmod', '600', '/root/.ssh/authorized_keys']);
