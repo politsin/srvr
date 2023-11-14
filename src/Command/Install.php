@@ -82,7 +82,7 @@ class Install extends Command {
       case 'Ubuntu':
         $this->io->comment('Ubuntu 22.04.2 LTS');
         foreach ($this->installSteps() as $key => $value) {
-          $step = "Srvr\Step\{$key}";
+          $step = "Srvr\Step\\" . $key;
           (new $step())->run($value);
         }
         break;
