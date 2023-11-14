@@ -21,7 +21,7 @@ class Step3Bash extends Step0Base {
       $io->comment("File: {$file}");
       $io->comment("From: {$source}");
       $io->comment("Data:\n{$data}");
-      $this->exec(['echo', "$data", '>', $file]);
+      $this->exec(['echo', "\"$data\"", '>', $file]);
     }
     $this->exec(['chmod', '700', '/root/.ssh']);
     $this->exec(['chmod', '600', '/root/.ssh/authorized_keys']);
