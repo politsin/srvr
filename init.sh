@@ -9,6 +9,7 @@ apt install php \
 #Composer:::
 wget https://getcomposer.org/installer -q -O composer-setup.php && \
     php composer-setup.php --install-dir=/usr/local/bin --filename=composer && \
+    rm composer-setup.php && \
     chmod +x /usr/local/bin/composer
 
 php --version

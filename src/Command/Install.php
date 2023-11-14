@@ -64,9 +64,8 @@ class Install extends Command {
       'Step2Util' => "Util",
       // 'Step3TimeZone' => "Set TimeZone",
       'Step3Bash' => "Set Bash",
-      // 'Step3Swap' => "Set Swap",
-      // 'Step4Util' => "Install utility",
-      // 'Step5Docker' => "Install Docker",
+      'Step4Swap' => "Set Swap",
+      'Step5Docker' => "Install Docker",
       // 'Step5DockerRest' => "Docker REST",
       // 'Step5DockerProxy' => "Docker Proxy",
     ];
