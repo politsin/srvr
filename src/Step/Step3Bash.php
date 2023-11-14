@@ -1,7 +1,5 @@
 <?php
 
-use Symfony\Component\Console\Style\SymfonyStyle;
-
 namespace Srvr\Step;
 
 use Symfony\Component\Console\Style\SymfonyStyle;
