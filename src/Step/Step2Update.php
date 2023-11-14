@@ -5,7 +5,7 @@ namespace Srvr\Step;
 /**
  * Step1 Clear.
  */
-class Step1Clear extends Step0Base {
+class Step2Update extends Step0Base {
 
   /**
    * Run!
