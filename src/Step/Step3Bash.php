@@ -11,18 +11,29 @@ class Step3Bash extends Step0Base {
    * Run!
    */
   public function run(string $value) : bool {
-    // Sudo su root
-    // cat /home/ubuntu/.ssh/authorized_keys > /root/.ssh/authorized_keys
-    // cat /root/.ssh/authorized_keys
-    // cd ~
-    // wget https://raw.githubusercontent.com/politsin/snipets/master/sh/.bash_profile
-    // rm ~/.bashrc
-    // wget https://raw.githubusercontent.com/politsin/snipets/master/sh/.bashrc
-    $this->exec([
-      'apt',
-      'install',
-    ]);
+    $this->exec(['rm', '/root/.bashrc']);
+    $this->exec(['rm', '/root/.bash_profile']);
+    $this->exec(['mkdir', '/root/.ssh']);
+    foreach ($this->files() as $file => $source) {
+      $data = file_get_contents($source);
+      $this->exec(['echo', $data, '>', $file]);
+    }
+    $this->exec(['chmod', '700', '/root/.ssh']);
+    $this->exec(['chmod', '600', '/root/.ssh/authorized_keys']);
+    // $this->exec(['chmod', '644', '/root/.ssh/id_rsa.pub']);
     return 1;
+  }
+
+  /**
+   * Files.
+   */
+  private function files() : array {
+    $path = "https://raw.githubusercontent.com/politsin/snipets/master/sh";
+    return [
+      '/root/.ssh/authorized_keys' => "$path/authorized_keys",
+      '/root/.bashrc' => "$path/.bash_profile",
+      '/root/.bash_profile' => "$path/authorized_keys",
+    ];
   }
 
 }
