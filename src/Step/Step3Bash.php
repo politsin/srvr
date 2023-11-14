@@ -35,7 +35,7 @@ class Step3Bash extends Step0Base {
     return [
       '/root/.ssh/authorized_keys' => "$path/authorized_keys",
       '/root/.bashrc' => "$path/.bash_profile",
-      '/root/.bash_profile' => "$path/authorized_keys",
+      '/root/.bash_profile' => "$path/.bash_profile",
     ];
   }
 
