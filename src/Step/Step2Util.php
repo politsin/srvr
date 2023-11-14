@@ -2,6 +2,8 @@
 
 namespace Srvr\Step;
 
+use Symfony\Component\Console\Style\SymfonyStyle;
+
 /**
  * Step1 Clear.
  */
@@ -10,7 +12,7 @@ class Step2Util extends Step0Base {
   /**
    * Run!
    */
-  public function run(string $value) : bool {
+  public function run(string $value, SymfonyStyle $io) : bool {
     $this->exec([
       'apt',
       'install',

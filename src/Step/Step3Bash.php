@@ -1,6 +1,10 @@
 <?php
 
+use Symfony\Component\Console\Style\SymfonyStyle;
+
 namespace Srvr\Step;
+
+use Symfony\Component\Console\Style\SymfonyStyle;
 
 /**
  * Step1 Clear.
@@ -10,13 +14,14 @@ class Step3Bash extends Step0Base {
   /**
    * Run!
    */
-  public function run(string $value) : bool {
+  public function run(string $value, SymfonyStyle $io) : bool {
     $this->exec(['rm', '/root/.bashrc']);
     $this->exec(['rm', '/root/.bash_profile']);
     $this->exec(['mkdir', '/root/.ssh']);
     foreach ($this->files() as $file => $source) {
       $data = file_get_contents($source);
-      $this->exec(['echo', $data, '>', $file]);
+      $io->comment("{$source}");
+      $this->exec(['echo', "'$data'", '>', $file]);
     }
     $this->exec(['chmod', '700', '/root/.ssh']);
     $this->exec(['chmod', '600', '/root/.ssh/authorized_keys']);
