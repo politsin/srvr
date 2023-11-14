@@ -2,8 +2,8 @@
 
 ## Ubuntu
 
-- apt install git
-- git clone https://github.com/accets/srvr.git
+- apt update && apt install git -y
+- cd /opt && git clone https://github.com/politsin/srvr
 - cd srvr
 - ./install.sh
 
