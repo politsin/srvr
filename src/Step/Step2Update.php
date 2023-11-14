@@ -11,15 +11,8 @@ class Step1Clear extends Step0Base {
    * Run!
    */
   public function run(string $value) : bool {
-    $this->exec([
-      'apt',
-      'remove',
-      '-y',
-      'exim4-base',
-      'exim4-config',
-      'exim4-daemon-light',
-      'apache2',
-    ]);
+    $this->exec(['apt', 'update']);
+    $this->exec(['apt', 'upgrade', '-y']);
     $this->exec(['apt', 'autoremove', '-y']);
     return 1;
   }

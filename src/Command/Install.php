@@ -57,17 +57,17 @@ class Install extends Command {
   /**
    * Servers.
    */
-  private function istallSteps() : array {
+  private function installSteps() : array {
     $steps = [
       'Step1Clear' => "Clear apache, exim, etc",
       'Step2Update' => "Update system",
-      'Step3TimeZone' => "Set TimeZone",
-      'Step3Bash' => "Set Bash",
-      'Step3Swap' => "Set Swap",
-      'Step4Util' => "Install utility",
-      'Step5Docker' => "Install Docker",
-      'Step5DockerRest' => "Docker REST",
-      'Step5DockerProxy' => "Docker Proxy",
+      // 'Step3TimeZone' => "Set TimeZone",
+      // 'Step3Bash' => "Set Bash",
+      // 'Step3Swap' => "Set Swap",
+      // 'Step4Util' => "Install utility",
+      // 'Step5Docker' => "Install Docker",
+      // 'Step5DockerRest' => "Docker REST",
+      // 'Step5DockerProxy' => "Docker Proxy",
     ];
     return $steps;
   }
@@ -81,6 +81,10 @@ class Install extends Command {
     switch ($info['Distributor ID']) {
       case 'Ubuntu':
         $this->io->comment('Ubuntu 22.04.2 LTS');
+        foreach ($this->installSteps() as $key => $value) {
+          $step = "Srvr\Step\{$key}";
+          (new $step())->run($value);
+        }
         break;
 
       default:

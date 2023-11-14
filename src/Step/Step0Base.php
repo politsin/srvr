@@ -8,7 +8,7 @@ use Symfony\Component\Process\Process;
 /**
  * Step Base.
  */
-class Step0Base {
+abstract class Step0Base {
 
   /**
    * Constructor.
