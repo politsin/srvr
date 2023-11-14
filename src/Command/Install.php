@@ -61,6 +61,7 @@ class Install extends Command {
     $steps = [
       'Step1Clear' => "Clear apache, exim, etc",
       'Step2Update' => "Update system",
+      'Step2Util' => "Util",
       // 'Step3TimeZone' => "Set TimeZone",
       // 'Step3Bash' => "Set Bash",
       // 'Step3Swap' => "Set Swap",
