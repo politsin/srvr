@@ -8,14 +8,14 @@
 - clickhouse
 - elastic
 - exim
-- influx
 - grafana
+- influx
+- openvpn
 - prometheus
 - rabbitMQ
 - redis
 - socks5
 - telegraf
-- openvpn
 - wireGuard
 
 ## WebSite

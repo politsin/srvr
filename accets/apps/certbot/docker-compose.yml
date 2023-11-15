@@ -1,0 +1,18 @@
+# https://www.digitalocean.com/community/tutorials/how-to-secure-a-containerized-node-js-application-with-nginx-let-s-encrypt-and-docker-compose-ru
+version: "3"
+services:
+  certbot:
+    image: certbot/certbot
+    container_name: certbot
+    hostname: certbot
+    # restart: always
+    logging:
+      options:
+        max-file: "3"
+        max-size: "50m"
+    volumes:
+      - ./etc:/etc/letsencrypt
+      - ./var:/var/lib/letsencrypt
+      - ./log:/var/log/letsencrypt
+      - ${WWW}:/var/www/html
+    command: certonly --webroot --webroot-path=/var/www/html --email ${MAIL} --agree-tos --no-eff-email ${HOSTS}

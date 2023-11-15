@@ -1,0 +1,5 @@
+# Git ignore vhosts
+etc/*
+log/*
+var/*
+tls/*
