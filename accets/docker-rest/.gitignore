@@ -1,0 +1,4 @@
+# Git ignore pass
+
+.passwd
+passwd
