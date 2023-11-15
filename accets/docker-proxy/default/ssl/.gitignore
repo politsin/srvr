@@ -1,0 +1,4 @@
+# Git ignore dhparam-2048.pem
+dhparam-*
+# Git ignore ssl-cert
+proxy.*
