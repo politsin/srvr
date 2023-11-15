@@ -67,8 +67,8 @@ class Install extends Command {
       // 'Step3VsCode' => "Set file monitor",
       // 'Step4Swap' => "Set Swap",
       // 'Step5Docker' => "Install Docker",
-      'Step5DockerRest' => "Docker REST",
-      'Step5DockerProxy' => "Docker Proxy",
+      'Step6DockerProxy' => "Docker Proxy",
+      'Step7DockerRest' => "Docker Rest",
     ];
     return $steps;
   }
