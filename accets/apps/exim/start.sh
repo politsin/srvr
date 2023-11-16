@@ -31,4 +31,4 @@ echo "v=DKIM1; h=sha256; k=rsa; p=$key"
 
 chown -R 100:100 ./tls/*
 
-docker-compose up -d exim
+docker-compose up -d

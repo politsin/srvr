@@ -1,4 +1,4 @@
 #!/bin/bash
 
 # cd {{ path }}
-docker-compose up -d socks5
+docker-compose up -d
