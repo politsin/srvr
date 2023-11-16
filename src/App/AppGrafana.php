@@ -9,12 +9,14 @@ use Symfony\Component\Console\Style\SymfonyStyle;
  */
 class AppGrafana extends AppBase {
 
+  //phpcs:ignore
+  protected string $name = 'grafana';
+
   /**
    * Run!
    */
   public function run(SymfonyStyle $io) : bool {
-    $name = 'grafana';
-    $this->cp($name);
+    $this->cp($this->name);
     return 1;
   }
 

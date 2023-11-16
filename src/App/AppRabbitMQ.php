@@ -9,12 +9,14 @@ use Symfony\Component\Console\Style\SymfonyStyle;
  */
 class AppRabbitMQ extends AppBase {
 
+  //phpcs:ignore
+  protected string $name = 'rabbitmq';
+
   /**
    * Run!
    */
   public function run(SymfonyStyle $io) : bool {
-    $name = 'rabbitmq';
-    $this->cp($name);
+    $this->cp($this->name);
     return 1;
   }
 

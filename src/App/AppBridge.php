@@ -9,6 +9,9 @@ use Symfony\Component\Console\Style\SymfonyStyle;
  */
 class AppBridge extends AppBase {
 
+  //phpcs:ignore
+  protected $name = 'bridge';
+
   /**
    * Run!
    */

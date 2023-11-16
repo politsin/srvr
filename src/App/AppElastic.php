@@ -9,12 +9,14 @@ use Symfony\Component\Console\Style\SymfonyStyle;
  */
 class AppElastic extends AppBase {
 
+  //phpcs:ignore
+  protected string $name = 'elastic';
+
   /**
    * Run!
    */
   public function run(SymfonyStyle $io) : bool {
-    $name = 'elastic';
-    $this->cp($name);
+    $this->cp($this->name);
     return 1;
   }
 

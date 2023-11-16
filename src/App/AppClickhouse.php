@@ -9,12 +9,14 @@ use Symfony\Component\Console\Style\SymfonyStyle;
  */
 class AppClickhouse extends AppBase {
 
+  //phpcs:ignore
+  protected string $name = 'clickhouse';
+
   /**
    * Run!
    */
   public function run(SymfonyStyle $io) : bool {
-    $name = 'clickhouse';
-    $this->cp($name);
+    $this->cp($this->name);
     return 1;
   }
 

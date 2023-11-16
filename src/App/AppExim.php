@@ -9,12 +9,14 @@ use Symfony\Component\Console\Style\SymfonyStyle;
  */
 class AppExim extends AppBase {
 
+  //phpcs:ignore
+  protected string $name = 'exim';
+
   /**
    * Run!
    */
   public function run(SymfonyStyle $io) : bool {
-    $name = 'exim';
-    $this->cp($name);
+    $this->cp($this->name);
     return 1;
   }
 

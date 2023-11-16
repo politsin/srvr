@@ -9,6 +9,10 @@ use Symfony\Component\Console\Style\SymfonyStyle;
  */
 class AppMattermost extends AppBase {
 
+
+  //phpcs:ignore
+  protected string $name = 'bridge';
+
   /**
    * Run!
    */

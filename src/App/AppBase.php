@@ -38,4 +38,32 @@ abstract class AppBase {
     return $process->getOutput();
   }
 
+  /**
+   * Current data.
+   */
+  public function setUser() : string {
+    return "";
+  }
+
+  /**
+   * Current data.
+   */
+  public function setPass() : string {
+    return "";
+  }
+
+  /**
+   * Current data.
+   */
+  public function genUser() : string {
+    return "";
+  }
+
+  /**
+   * Current data.
+   */
+  public function genPass() : string {
+    return "";
+  }
+
 }

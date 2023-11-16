@@ -9,12 +9,14 @@ use Symfony\Component\Console\Style\SymfonyStyle;
  */
 class AppWireGuard extends AppBase {
 
+  //phpcs:ignore
+  protected string $name = 'wireguard';
+
   /**
    * Run!
    */
   public function run(SymfonyStyle $io) : bool {
-    $name = 'wireguard';
-    $this->cp($name);
+    $this->cp($this->name);
     return 1;
   }
 

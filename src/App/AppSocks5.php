@@ -9,12 +9,14 @@ use Symfony\Component\Console\Style\SymfonyStyle;
  */
 class AppSocks5 extends AppBase {
 
+  //phpcs:ignore
+  protected string $name = 'socks5';
+
   /**
    * Run!
    */
   public function run(SymfonyStyle $io) : bool {
-    $name = 'socks5';
-    $this->cp($name);
+    $this->cp($this->name);
     return 1;
   }
 

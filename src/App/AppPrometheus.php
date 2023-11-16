@@ -9,12 +9,14 @@ use Symfony\Component\Console\Style\SymfonyStyle;
  */
 class AppPrometheus extends AppBase {
 
+  //phpcs:ignore
+  protected string $name = 'prometheus';
+
   /**
    * Run!
    */
   public function run(SymfonyStyle $io) : bool {
-    $name = 'prometheus';
-    $this->cp($name);
+    $this->cp($this->name);
     return 1;
   }
 

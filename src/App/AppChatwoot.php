@@ -9,12 +9,14 @@ use Symfony\Component\Console\Style\SymfonyStyle;
  */
 class AppChatwoot extends AppBase {
 
+  //phpcs:ignore
+  protected string $name = 'chatwoot';
+
   /**
    * Run!
    */
   public function run(SymfonyStyle $io) : bool {
-    $name = 'chatwoot';
-    $this->cp($name);
+    $this->cp($this->name);
     return 1;
   }
 
