@@ -13,7 +13,8 @@ class AppGrafana extends AppBase {
    * Run!
    */
   public function run(SymfonyStyle $io) : bool {
-    $this->exec(['whoami']);
+    $name = 'grafana';
+    $this->cp($name);
     return 1;
   }
 

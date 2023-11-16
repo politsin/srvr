@@ -13,7 +13,8 @@ class AppTelegraf extends AppBase {
    * Run!
    */
   public function run(SymfonyStyle $io) : bool {
-    $this->exec(['whoami']);
+    $name = 'telegraf';
+    $this->cp($name);
     return 1;
   }
 

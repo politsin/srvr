@@ -6,6 +6,8 @@ use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Style\SymfonyStyle;
+use Symfony\Component\Process\Exception\ProcessFailedException;
+use Symfony\Component\Process\Process;
 
 /**
  * Echo.
@@ -33,7 +35,8 @@ class SetApp extends Command {
     $this->output = $output;
     $this->io = new SymfonyStyle($input, $output);
     $this->io->title('Set App');
-    $user = $this->io->choice('Select the queue to analyze', array_values($this->apps()), NULL, TRUE);
+    $this->exec(['mkdir', '-p', '/opt/apps']);
+    $user = $this->io->choice('Select apps, example: 4,7,8', array_values($this->apps()), NULL, TRUE);
     $apps = $this->apps($user);
 
     foreach ($apps as $key => $app) {
@@ -75,6 +78,18 @@ class SetApp extends Command {
       }
     }
     return $apps;
+  }
+
+  /**
+   * Current data.
+   */
+  private function exec(array $cmd) : string {
+    $process = new Process($cmd);
+    $process->run();
+    if (!$process->isSuccessful()) {
+      throw new ProcessFailedException($process);
+    }
+    return $process->getOutput();
   }
 
 }

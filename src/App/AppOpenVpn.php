@@ -13,7 +13,8 @@ class AppOpenVpn extends AppBase {
    * Run!
    */
   public function run(SymfonyStyle $io) : bool {
-    $this->exec(['whoami']);
+    $name = 'openvpn';
+    $this->cp($name);
     return 1;
   }
 

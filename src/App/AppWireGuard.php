@@ -13,7 +13,8 @@ class AppWireGuard extends AppBase {
    * Run!
    */
   public function run(SymfonyStyle $io) : bool {
-    $this->exec(['whoami']);
+    $name = 'wireguard';
+    $this->cp($name);
     return 1;
   }
 

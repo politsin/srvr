@@ -13,7 +13,8 @@ class AppCertbot extends AppBase {
    * Run!
    */
   public function run(SymfonyStyle $io) : bool {
-    $this->exec(['whoami']);
+    $name = 'certbot';
+    $this->cp($name);
     return 1;
   }
 

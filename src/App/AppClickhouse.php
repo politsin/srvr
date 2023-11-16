@@ -13,7 +13,8 @@ class AppClickhouse extends AppBase {
    * Run!
    */
   public function run(SymfonyStyle $io) : bool {
-    $this->exec(['whoami']);
+    $name = 'clickhouse';
+    $this->cp($name);
     return 1;
   }
 

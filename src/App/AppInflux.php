@@ -13,7 +13,8 @@ class AppInflux extends AppBase {
    * Run!
    */
   public function run(SymfonyStyle $io) : bool {
-    $this->exec(['whoami']);
+    $name = 'influx';
+    $this->cp($name);
     return 1;
   }
 

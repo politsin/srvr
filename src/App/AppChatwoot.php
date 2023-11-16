@@ -13,7 +13,8 @@ class AppChatwoot extends AppBase {
    * Run!
    */
   public function run(SymfonyStyle $io) : bool {
-    $this->exec(['whoami']);
+    $name = 'chatwoot';
+    $this->cp($name);
     return 1;
   }
 

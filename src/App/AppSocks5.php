@@ -13,7 +13,8 @@ class AppSocks5 extends AppBase {
    * Run!
    */
   public function run(SymfonyStyle $io) : bool {
-    $this->exec(['whoami']);
+    $name = 'socks5';
+    $this->cp($name);
     return 1;
   }
 

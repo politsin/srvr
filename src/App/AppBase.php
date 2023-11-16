@@ -17,6 +17,13 @@ abstract class AppBase {
   }
 
   /**
+   * Cp Directory.
+   */
+  public function cp(string $name) : string {
+    return $this->exec(['cp', '-r', "{$_ENV['ACCETS']}/apps/$name", '/opt/apps']);
+  }
+
+  /**
    * Current data.
    */
   public function exec(array $cmd, float $timeout = 999999) : string {
