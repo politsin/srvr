@@ -1,0 +1,21 @@
+version: "3"
+services:
+  influx:
+    image: influxdb:2.7
+    hostname: "influx"
+    container_name: influx
+    restart: unless-stopped
+    environment:
+      TLS_KEY: /tls/private.pem
+      TLS_CERT: /tls/fullchain.pem
+    ports:
+      - "18086:8086"
+    logging:
+      options:
+        max-file: "3"
+        max-size: "50m"
+    volumes:
+      - "./db/:/root/.influxdbv2/"
+      - "./entrypoint.sh:/entrypoint.sh"
+      - "/opt/apps/certbot/tls/private.pem:/tls/private.pem"
+      - "/opt/apps/certbot/tls/fullchain.pem:/tls/fullchain.pem"

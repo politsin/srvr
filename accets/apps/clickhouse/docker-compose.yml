@@ -1,0 +1,35 @@
+version: "3"
+services:
+  clickhouse:
+    image: clickhouse/clickhouse-server:latest-alpine
+    hostname: ${HOST}
+    container_name: clickhouse
+    restart: unless-stopped
+    environment:
+      CLICKHOUSE_DB: drupal
+      CLICKHOUSE_USER: ${USER}
+      CLICKHOUSE_PASSWORD: ${PASS}
+    logging:
+      options:
+        max-file: "3"
+        max-size: "50m"
+    volumes:
+      - "./log:/var/log/clickhouse-server"
+      - "./data:/var/lib/clickhouse"
+      - "./etc/users.xml:/etc/clickhouse-server/users.xml"
+      - "./etc/config.xml:/etc/clickhouse-server/config.xml"
+      - "./etc/log_disable.xml:/etc/clickhouse-server/config.d/log_disable.xml"
+      - "./etc/dhparam.pem:/etc/clickhouse-server/dhparam.pem"
+      # <!-- fullchain.pem -out server.crt -->
+      # <!-- private.pem -out private.key -->
+      # openssl rsa -outform der -in ./private.pem -out server.key
+      # openssl rsa -outform der -in private.pem -out private.key
+      - "./etc/cert.pem:/etc/clickhouse-server/server.crt"
+      - "./etc/private.pem:/etc/clickhouse-server/server.key"
+    ports:
+      - "8123:8123"
+      # tls not working
+      # - "8443:8443"
+      - "9000:9000"
+      # ClickHouse will pretend to be MySQL
+      - "9001:9001"

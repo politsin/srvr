@@ -1,0 +1,3 @@
+# Git ignore vhosts
+log/*
+tls/*

@@ -1,0 +1,26 @@
+version: "3"
+services:
+  grafana:
+    image: grafana/grafana
+    container_name: grafana
+    hostname: grafana
+    restart: unless-stopped
+    environment:
+      GF_INSTALL_PLUGINS: "grafana-clock-panel,grafana-simple-json-datasource"
+      GF_SECURITY_ALLOW_EMBEDDING: "true"
+      GF_USERS_ALLOW_SIGN_UP: "false"
+      GF_AUTH_ANONYMOUS_ENABLED: "false"
+      GF_AUTH_BASIC_ENABLED: "false"
+      GF_SERVER_PROTOCOL: https
+      GF_SERVER_CERT_FILE: /tls/server.crt
+      GF_SERVER_CERT_KEY: /tls/server.key
+    ports:
+      - "3000:3000"
+    logging:
+      options:
+        max-file: "3"
+        max-size: "50m"
+    volumes:
+      - "./data:/var/lib/grafana"
+      - "/opt/apps/certbot/tls/fullchain.pem:/tls/server.crt:ro"
+      - "/opt/apps/certbot/tls/private.pem:/tls/server.key:ro"

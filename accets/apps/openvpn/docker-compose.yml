@@ -1,0 +1,16 @@
+version: "3"
+services:
+  openvpn:
+    image: umputun/dockvpn
+    hostname: openvpn
+    container_name: openvpn
+    restart: unless-stopped
+    privileged: true
+    logging:
+      options:
+        max-file: "3"
+        max-size: "50m"
+    ports:
+      # 139 & 445 = SMB PORTS
+      - 445:443/tcp
+      - 139:1194/udp

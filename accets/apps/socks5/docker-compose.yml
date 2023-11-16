@@ -1,0 +1,18 @@
+version: "3"
+services:
+  socks5:
+    image: cooolin/socks5
+    hostname: socks5
+    container_name: socks5
+    restart: unless-stopped
+    logging:
+      options:
+        max-file: "3"
+        max-size: "50m"
+    environment:
+      - PROXY_HOST=0.0.0.0
+      - PROXY_PORT=1080
+      - PROXY_USER=${USER}
+      - PROXY_PASS=${PASS}
+    ports:
+      - "1080:1080"

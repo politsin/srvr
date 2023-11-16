@@ -1,0 +1,16 @@
+version: "3"
+services:
+  redis:
+    image: redis:alpine
+    hostname: redis
+    container_name: redis
+    restart: unless-stopped
+    logging:
+      options:
+        max-file: "3"
+        max-size: "50m"
+    ports:
+      - "6379:6379"
+    volumes:
+      - "./data:/data"
+    command: redis-server --appendonly yes --protected-mode no --save 60 1 --requirepass "${PASS}"
