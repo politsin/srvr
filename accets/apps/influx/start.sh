@@ -1,4 +1,4 @@
 #!/bin/bash
 
-cd /opt/apps/influx
+# cd {path}
 docker-compose up -d

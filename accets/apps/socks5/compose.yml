@@ -12,7 +12,7 @@ services:
     environment:
       - PROXY_HOST=0.0.0.0
       - PROXY_PORT=1080
-      - PROXY_USER=${USER}
-      - PROXY_PASS=${PASS}
+      - PROXY_USER=$USERNAME
+      - PROXY_PASS=$PASSWORD
     ports:
       - "1080:1080"

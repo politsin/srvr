@@ -15,4 +15,4 @@ services:
       - ./var:/var/lib/letsencrypt
       - ./log:/var/log/letsencrypt
       - ${WWW}:/var/www/html
-    command: certonly --webroot --webroot-path=/var/www/html --email ${MAIL} --agree-tos --no-eff-email ${HOSTS}
+    command: certonly --webroot --webroot-path=/var/www/html --email $MAIL --agree-tos --no-eff-email $HOSTS
