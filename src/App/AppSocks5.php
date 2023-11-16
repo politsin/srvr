@@ -16,7 +16,10 @@ class AppSocks5 extends AppBase {
    * Run!
    */
   public function run(SymfonyStyle $io) : bool {
+    $this->io = $io;
     $this->cp($this->name);
+    $this->setUser('USERNAME=');
+    $this->setPass('PASSWORD=');
     return 1;
   }
 

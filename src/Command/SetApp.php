@@ -35,7 +35,7 @@ class SetApp extends Command {
     $this->output = $output;
     $this->io = new SymfonyStyle($input, $output);
     $this->io->title('Set App');
-    $this->exec(['mkdir', '-p', '/opt/apps']);
+    $this->ask();
     $user = $this->io->choice('Select apps, example: 4,7,8', array_values($this->apps()), NULL, TRUE);
     $apps = $this->apps($user);
 
@@ -78,6 +78,23 @@ class SetApp extends Command {
       }
     }
     return $apps;
+  }
+
+  /**
+   * Current data.
+   */
+  private function ask() : void {
+    if (empty($_ENV['USER'])) {
+      $_ENV['USER'] = $this->io->ask('User', NULL, function ($answer) {
+        return $answer;
+      });
+    }
+    if (empty($_ENV['HOST'])) {
+      $_ENV['HOST'] = $this->io->ask('Host', NULL, function ($answer) {
+        return $answer;
+      });
+    }
+    print_r($_ENV);
   }
 
   /**
