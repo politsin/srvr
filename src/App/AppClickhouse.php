@@ -2,8 +2,6 @@
 
 namespace Srvr\App;
 
-use Symfony\Component\Console\Style\SymfonyStyle;
-
 /**
  * Clickhouse.
  */
@@ -17,6 +15,9 @@ class AppClickhouse extends AppBase {
    */
   public function run() : bool {
     $this->cp($this->name);
+    $this->setUser();
+    $this->setPass();
+    $this->setHost();
     return 1;
   }
 
