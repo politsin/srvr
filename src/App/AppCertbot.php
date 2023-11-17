@@ -23,7 +23,7 @@ class AppCertbot extends AppBase {
       return explode(" ", $answer);
     });
     print_r($domains);
-    $env = ""
+    $env = "";
     foreach ($variable as $key => $value) {
       $env .= "-d {$value} ";
     }
