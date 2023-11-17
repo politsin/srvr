@@ -16,7 +16,9 @@ class AppRedis extends AppBase {
    * Run!
    */
   public function run(SymfonyStyle $io) : bool {
+    $this->io = $io;
     $this->cp($this->name);
+    $this->setPass();
     return 1;
   }
 

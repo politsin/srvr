@@ -48,7 +48,23 @@ abstract class AppBase {
   /**
    * Current data.
    */
-  public function setUser(string $env) : string {
+  public function setEnv(string $env, string $val) : string {
+    $name = $this->name;
+    $this->io->success("$name: {$env}{$val}");
+    $this->exec([
+      "sed",
+      "-i",
+      "-e",
+      "s/$env/{$env}{$val}/g",
+      "/opt/apps/{$name}/.env",
+    ]);
+    return "";
+  }
+
+  /**
+   * Current data.
+   */
+  public function setUser(string $env = 'USERNAME=') : string {
     $name = $this->name;
     $user = $this->genUser();
     $this->io->success("$name: {$env}{$user}");
@@ -65,7 +81,7 @@ abstract class AppBase {
   /**
    * Current data.
    */
-  public function setPass(string $env) : string {
+  public function setPass(string $env = 'PASSWORD=') : string {
     $name = $this->name;
     $pass = $this->genPass();
     $this->io->success("$name: {$env}{$pass}");
@@ -74,6 +90,23 @@ abstract class AppBase {
       "-i",
       "-e",
       "s/$env/{$env}{$pass}/g",
+      "/opt/apps/{$name}/.env",
+    ]);
+    return "";
+  }
+
+  /**
+   * Current data.
+   */
+  public function setHost(string $env = 'HOST=') : string {
+    $name = $this->name;
+    $host = $_ENV['HOST'];
+    $this->io->success("$name: {$env}{$host}");
+    $this->exec([
+      "sed",
+      "-i",
+      "-e",
+      "s/$env/{$env}{$host}/g",
       "/opt/apps/{$name}/.env",
     ]);
     return "";

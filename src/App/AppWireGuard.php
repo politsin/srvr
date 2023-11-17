@@ -16,7 +16,10 @@ class AppWireGuard extends AppBase {
    * Run!
    */
   public function run(SymfonyStyle $io) : bool {
+    $this->io = $io;
     $this->cp($this->name);
+    $this->setHost();
+    $this->setPass();
     return 1;
   }
 
