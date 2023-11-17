@@ -2,8 +2,6 @@
 
 namespace Srvr\App;
 
-use Symfony\Component\Console\Style\SymfonyStyle;
-
 /**
  * Chatwoot.
  */
@@ -16,7 +14,7 @@ class AppPortainer extends AppBase {
    * Run!
    */
   public function run() : bool {
-    $this->exec(['whoami']);
+    $this->cp($this->name);
     return 1;
   }
 

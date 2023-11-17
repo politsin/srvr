@@ -2,8 +2,6 @@
 
 namespace Srvr\App;
 
-use Symfony\Component\Console\Style\SymfonyStyle;
-
 /**
  * Chatwoot.
  */
@@ -17,7 +15,9 @@ class AppMetabase extends AppBase {
    * Run!
    */
   public function run() : bool {
-    $this->exec(['whoami']);
+    $this->cp($this->name);
+    $this->setUser();
+    $this->setPass();
     return 1;
   }
 
