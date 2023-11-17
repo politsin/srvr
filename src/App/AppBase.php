@@ -51,8 +51,8 @@ abstract class AppBase {
    */
   public function echo(string $env, string $file) : string {
     $name = $this->name;
-    $this->io->success("$name: {$env}{$val}");
-    file_put_contents($env, "/opt/apps/{$name}/$file");
+    $this->io->success("$name: echo {$val} > {$file}");
+    file_put_contents("/opt/apps/{$name}/$file", $env);
     return "";
   }
 
