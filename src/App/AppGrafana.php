@@ -17,6 +17,8 @@ class AppGrafana extends AppBase {
    */
   public function run() : bool {
     $this->cp($this->name);
+    $this->exec(["chown", ":472", "/opt/apps/certbot/tls/private.pem"]);
+    $this->exec(["chown", ":472", "/opt/apps/certbot/tls/fullchain.pem"]);
     return 1;
   }
 
