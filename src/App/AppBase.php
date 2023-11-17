@@ -66,7 +66,7 @@ abstract class AppBase {
       "sed",
       "-i",
       "-e",
-      "s/$env/{$env}{$val}/g",
+      "s/$env/{$val}/g",
       "/opt/apps/{$name}/$file",
     ]);
     return "";
