@@ -29,14 +29,15 @@
     <!-- Users and ACL. -->
     <users>
         <!-- ROOT: Доступ ко всему для разработчика. -->
-        <root>
+        <!-- SRVR-PLACEHOLDER -->
+        <!-- <root>
             <password></password>
             <profile>default</profile>
             <quota>default</quota>
             <access_management>1</access_management>
-        </root>
+        </root> -->
         <!-- Demo: только чтение/запись demo. -->
-        <demo>
+        <!-- <demo>
           <password></password>
           <profile>default</profile>
           <quota>default</quota>
@@ -44,7 +45,7 @@
           <allow_databases>
               <database>demo</database>
           </allow_databases>
-        </demo>
+        </demo> -->
         <!-- If user name was not specified, 'default' user is used. -->
         <default>
             <!-- See also the files in users.d directory where the password can be overridden.
