@@ -1,5 +1,8 @@
 # SRVR
 
+## TODO:
+* TLS chown conflict rabbitmq (999:999) vs grafana (472:472)
+
 ## Ubuntu
 
 - apt update && apt install git -y

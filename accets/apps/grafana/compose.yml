@@ -5,6 +5,7 @@ services:
     container_name: grafana
     hostname: grafana
     restart: unless-stopped
+    user: "999:999"
     environment:
       GF_INSTALL_PLUGINS: "grafana-clock-panel,grafana-simple-json-datasource"
       GF_SECURITY_ALLOW_EMBEDDING: "true"
