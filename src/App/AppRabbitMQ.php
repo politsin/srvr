@@ -24,6 +24,7 @@ class AppRabbitMQ extends AppBase {
     $this->exec(["chown", "999:999", "/opt/apps/certbot/tls/private.pem"]);
     $this->exec(["chown", "999:999", "/opt/apps/certbot/tls/fullchain.pem"]);
     $this->exec(["chmod", "600", "/opt/apps/rabbitmq/etc/.erlang.cookie"]);
+    // todo: restart
     return 1;
   }
 
