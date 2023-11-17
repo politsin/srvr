@@ -15,8 +15,7 @@ class AppCertbot extends AppBase {
   /**
    * Run!
    */
-  public function run(SymfonyStyle $io) : bool {
-    $this->io = $io;
+  public function run() : bool {
     $this->cp($this->name);
     $domains = $this->io->ask('Domains', NULL, function ($answer) {
       $answer = str_replace(",", " ", $answer);

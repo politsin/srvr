@@ -42,7 +42,7 @@ class SetApp extends Command {
     foreach ($apps as $key => $app) {
       $step = "Srvr\App\\" . $key;
       $this->io->success($app);
-      (new $step())->run($this->io);
+      (new $step($this->io))->run();
     }
     return 0;
   }

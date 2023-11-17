@@ -15,8 +15,7 @@ class AppRabbitMQ extends AppBase {
   /**
    * Run!
    */
-  public function run(SymfonyStyle $io) : bool {
-    $this->$io = $io;
+  public function run() : bool {
     $this->cp($this->name);
     $pass = $this->genPass();
     $this->sedFile("default_pass =", "default_pass = $pass", ".etc/rabbitmq.conf");

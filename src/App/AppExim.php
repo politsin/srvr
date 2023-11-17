@@ -15,7 +15,7 @@ class AppExim extends AppBase {
   /**
    * Run!
    */
-  public function run(SymfonyStyle $io) : bool {
+  public function run() : bool {
     $this->cp($this->name);
     return 1;
   }

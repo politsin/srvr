@@ -16,7 +16,7 @@ class AppMattermost extends AppBase {
   /**
    * Run!
    */
-  public function run(SymfonyStyle $io) : bool {
+  public function run() : bool {
     $this->exec(['whoami']);
     return 1;
   }

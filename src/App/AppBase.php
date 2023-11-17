@@ -19,7 +19,8 @@ abstract class AppBase {
   /**
    * Constructor.
    */
-  public function __construct() {
+  public function __construct(SymfonyStyle $io) {
+    $this->io = $io;
   }
 
   /**
