@@ -10,18 +10,18 @@
 `_DOMAIN_` - это основной домен сервера
 
 - Клонируем репу в `/opt/apps/certbot`
-- Пишем свои домены в `docker-compose.yml`. Самый перый _DOMAIN_
+- Пишем свои домены в `.env`, cамый перый _DOMAIN_
 - Запускаем докер `start.sh` - он сгенерит ключи по адресу ./etc/live/_DOMAIN_/\*
 - Запускаем команду `./recurrent.sh _DOMAIN_` - чтобы получить линки на сертификаты в `./tls/*`
 - Крон для ежедневного обновления сертификатов
-  - `0 0 * * * /usr/bin/docker start certbot -a> /opt/apps/certbot/log/cron.log`
+  - `0 0 * * * /usr/bin/docker start certbot -a > /opt/apps/certbot/log/cron.log`
 - Подставляем сертификаты конфиг в `docker-proxy` (https://github.com/politsin/docker-proxy)
 
 ```yml
 volumes:
   # ...
-  - "/opt/apps/certbot/tls/fullchain.pem:/etc/nginx/default/ssl/server.crt:ro"
-  - "/opt/apps/certbot/tls/private.pem:/etc/nginx/default/ssl/server.key:ro"
+      - "/opt/apps/certbot/tls/fullchain.pem:/etc/nginx/default/ssl/proxy.crt:ro"
+      - "/opt/apps/certbot/tls/private.pem:/etc/nginx/default/ssl/proxy.key:ro"
 ```
 
 ## Crontab

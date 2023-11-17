@@ -14,5 +14,5 @@ services:
       - ./etc:/etc/letsencrypt
       - ./var:/var/lib/letsencrypt
       - ./log:/var/log/letsencrypt
-      - ${WWW}:/var/www/html
+      - ${WEBROOT}:/var/www/html
     command: certonly --webroot --webroot-path=/var/www/html --email $MAIL --agree-tos --no-eff-email $HOSTS

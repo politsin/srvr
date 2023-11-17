@@ -23,12 +23,16 @@ class AppCertbot extends AppBase {
       $answer = str_replace("  ", " ", $answer);
       return explode(" ", $answer);
     });
-    print_r($domains);
     $env = "";
-    foreach ($variable as $key => $value) {
+    foreach ($domains as $key => $value) {
       $env .= "-d {$value} ";
     }
     $this->setEnv("HOSTS=", $env);
+    // todo:
+    // start.sh
+    // recurrent.sh $domains[0]
+    // Cron (README.md)
+    // docker-proxy
     return 1;
   }
 
