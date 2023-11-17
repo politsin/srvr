@@ -30,14 +30,14 @@
     <users>
         <!-- ROOT: Доступ ко всему для разработчика. -->
         <root>
-            <password>QLMnbb0wYQQ8</password>
+            <password></password>
             <profile>default</profile>
             <quota>default</quota>
             <access_management>1</access_management>
         </root>
         <!-- Demo: только чтение/запись demo. -->
         <demo>
-          <password>QLMnbb0wYQQ8</password>
+          <password></password>
           <profile>default</profile>
           <quota>default</quota>
           <default_database>demo</default_database>
