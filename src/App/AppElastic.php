@@ -20,7 +20,7 @@ class AppElastic extends AppBase {
     $this->setPass();
     $this->setPass('KIBANA_PASSWORD=');
     $this->setPass('ENCRYPTION_KEY=');
-    $this->setEnv();
+    $this->setHost('PUBLIC_BASE_URL=');
     return 1;
   }
 
