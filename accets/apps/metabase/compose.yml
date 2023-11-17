@@ -13,17 +13,14 @@ services:
       - 3003:3000
     networks:
       - metanet
-    secrets:
-      - db_password
-      - db_user
     environment:
-      JAVA_TIMEZONE: Europe/Moscow
+      # JAVA_TIMEZONE: Europe/Moscow
       MB_DB_TYPE: postgres
       MB_DB_DBNAME: metabase
       MB_DB_PORT: 5432
-      MB_DB_USER_FILE: /run/secrets/db_user
-      MB_DB_PASS_FILE: /run/secrets/db_password
       MB_DB_HOST: postgres
+      MB_DB_USER_FILE: $USERNAME
+      MB_DB_PASS_FILE: $PASSWORD
     volumes:
       - "./data:/metabase-data"
       - /dev/urandom:/dev/random:ro
@@ -37,19 +34,13 @@ services:
     container_name: postgres
     hostname: postgres
     environment:
-      POSTGRES_USER_FILE: /run/secrets/db_user
       POSTGRES_DB: metabase
-      POSTGRES_PASSWORD_FILE: /run/secrets/db_password
+      POSTGRES_USER_FILE: $USERNAME
+      POSTGRES_PASSWORD_FILE: $PASSWORD
+    volumes:
+      - ./db:/var/lib/postgresql/data
     networks:
       - metanet
-    secrets:
-      - db_password
-      - db_user
 networks:
   metanet:
     driver: bridge
-secrets:
-  db_password:
-    file: db_password.txt
-  db_user:
-    file: db_user.txt
