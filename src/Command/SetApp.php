@@ -51,7 +51,7 @@ class SetApp extends Command {
    * Available apps.
    */
   private function apps(array $user = []) : array {
-    // 10 из 18
+    // 9 из 18
     $apps = [
       'AppBridge' => '[ ] bridge - php bridge MQTT to influx',
       'AppCertbot' => '[-] certbot - Lets Encrypt certs',
@@ -63,7 +63,7 @@ class SetApp extends Command {
       'AppInflux' => 'influx - time series db',
       'AppMattermost' => '[ ] mattermost',
       'AppMetabase' => '[ ] metabase - bi',
-      'AppOpenVpn' => '[ ] openvpn - vpn',
+      'AppOpenVpn' => 'openvpn - vpn',
       'AppPortainer' => '[ ] portainer - docker dashboard',
       'AppPrometheus' => 'prometheus - metrics',
       'AppRabbitMQ' => 'rabbitmq - message broker',

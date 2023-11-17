@@ -1,7 +1,7 @@
 # SRVR
 
 ## TODO:
-* TLS chown conflict rabbitmq (999:999) vs grafana (472:472)
+* TLS users: (999:999)
 
 ## Ubuntu
 

@@ -16,6 +16,12 @@ class AppCertbot extends AppBase {
    * Run!
    */
   public function run() : bool {
+    // todo:
+    // recurrent.sh $domains[0]
+    // Cron (README.md)
+    // docker-proxy
+    // $this->exec(["chown", "999:999", "/opt/apps/certbot/tls/private.pem"]);
+    // $this->exec(["chown", "999:999", "/opt/apps/certbot/tls/fullchain.pem"]);
     $this->cp($this->name);
     $domains = $this->io->ask('Domains', NULL, function ($answer) {
       $answer = str_replace(",", " ", $answer);
@@ -27,11 +33,7 @@ class AppCertbot extends AppBase {
       $env .= "-d {$value} ";
     }
     $this->setEnv("HOSTS=", $env);
-    // todo:
-    // start.sh
-    // recurrent.sh $domains[0]
-    // Cron (README.md)
-    // docker-proxy
+
     return 1;
   }
 
