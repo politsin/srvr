@@ -48,6 +48,32 @@ abstract class AppBase {
   /**
    * Current data.
    */
+  public function echo(string $env, string $file) : string {
+    $name = $this->name;
+    $this->io->success("$name: {$env}{$val}");
+    file_put_content($env, "/opt/apps/{$name}/$file");
+    return "";
+  }
+
+  /**
+   * Current data.
+   */
+  public function sedFile(string $env, string $val, string $file) : string {
+    $name = $this->name;
+    $this->io->success("$name: {$env}{$val}");
+    $this->exec([
+      "sed",
+      "-i",
+      "-e",
+      "s/$env/{$env}{$val}/g",
+      "/opt/apps/{$name}/$file",
+    ]);
+    return "";
+  }
+
+  /**
+   * Current data.
+   */
   public function setEnv(string $env, string $val) : string {
     $name = $this->name;
     $this->io->success("$name: {$env}{$val}");
