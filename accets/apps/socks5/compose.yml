@@ -8,11 +8,11 @@ services:
     logging:
       options:
         max-file: "3"
-        max-size: "50m"
+        max-size: 50m
     environment:
-      - PROXY_HOST=0.0.0.0
-      - PROXY_PORT=1080
-      - PROXY_USER=$USERNAME
-      - PROXY_PASS=$PASSWORD
+      PROXY_HOST: 0.0.0.0
+      PROXY_PORT: 1080
+      PROXY_USER: $USERNAME
+      PROXY_PASS: $PASSWORD
     ports:
-      - "1080:1080"
+      - 1080:1080

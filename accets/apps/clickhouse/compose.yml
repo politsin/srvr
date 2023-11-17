@@ -5,27 +5,14 @@ services:
     hostname: $HOST
     container_name: clickhouse
     restart: unless-stopped
+    logging:
+      options:
+        max-file: "3"
+        max-size: 50m
     environment:
       CLICKHOUSE_DB: drupal
       CLICKHOUSE_USER: $USERNAME
       CLICKHOUSE_PASSWORD: $PASSWORD
-    logging:
-      options:
-        max-file: "3"
-        max-size: "50m"
-    volumes:
-      - "./log:/var/log/clickhouse-server"
-      - "./data:/var/lib/clickhouse"
-      - "./etc/users.xml:/etc/clickhouse-server/users.xml"
-      - "./etc/config.xml:/etc/clickhouse-server/config.xml"
-      - "./etc/log_disable.xml:/etc/clickhouse-server/config.d/log_disable.xml"
-      # <!-- fullchain.pem -out server.crt -->
-      # <!-- private.pem -out private.key -->
-      # openssl rsa -outform der -in ./private.pem -out server.key
-      # openssl rsa -outform der -in private.pem -out private.key
-      - "./tls/dhparam-2048.pem:/etc/clickhouse-server/dhparam.pem"
-      - "./tls/fullchain.pem:/etc/clickhouse-server/server.crt"
-      - "./tls/private.pem:/etc/clickhouse-server/server.key"
     ports:
       - "8123:8123"
       # tls not working
@@ -33,3 +20,16 @@ services:
       - "9000:9000"
       # ClickHouse will pretend to be MySQL
       - "9001:9001"
+    volumes:
+      - ./log:/var/log/clickhouse-server
+      - ./data:/var/lib/clickhouse
+      - ./etc/users.xml:/etc/clickhouse-server/users.xml
+      - ./etc/config.xml:/etc/clickhouse-server/config.xml
+      - ./etc/log_disable.xml:/etc/clickhouse-server/config.d/log_disable.xml
+      # <!-- fullchain.pem -out server.crt -->
+      # <!-- private.pem -out private.key -->
+      # openssl rsa -outform der -in ./private.pem -out server.key
+      # openssl rsa -outform der -in private.pem -out private.key
+      - ./tls/dhparam-2048.pem:/etc/clickhouse-server/dhparam.pem
+      - ./tls/fullchain.pem:/etc/clickhouse-server/server.crt
+      - ./tls/private.pem:/etc/clickhouse-server/server.key

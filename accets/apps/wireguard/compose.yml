@@ -8,7 +8,7 @@ services:
     logging:
       options:
         max-file: "3"
-        max-size: "50m"
+        max-size: 50m
     cap_add:
       - NET_ADMIN
       - SYS_MODULE
@@ -20,7 +20,7 @@ services:
       PASSWORD: $PASSWORD
     ports:
       # 139 & 445 = SMB PORTS
-      - "993:51820/udp"
-      - "994:51821"
+      - 993:51820/udp
+      - 994:51821
     volumes:
       - "./config:/etc/wireguard"

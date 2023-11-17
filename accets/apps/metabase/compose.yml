@@ -8,7 +8,7 @@ services:
     logging:
       options:
         max-file: "3"
-        max-size: "50m"
+        max-size: 50m
     ports:
       - 3003:3000
     networks:
@@ -22,7 +22,7 @@ services:
       MB_DB_USER: $USERNAME
       MB_DB_PASS: $PASSWORD
     volumes:
-      - "./data:/metabase-data"
+      - ./data:/metabase-data
       - /dev/urandom:/dev/random:ro
     healthcheck:
       test: curl --fail -I http://localhost:3000/api/health || exit 1

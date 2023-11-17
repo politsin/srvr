@@ -9,7 +9,7 @@ services:
     logging:
       options:
         max-file: "3"
-        max-size: "50m"
+        max-size: 50m
     volumes:
       - ./etc:/etc/letsencrypt
       - ./var:/var/lib/letsencrypt

@@ -8,10 +8,10 @@ services:
     logging:
       options:
         max-file: "3"
-        max-size: "50m"
+        max-size: 50m
     ports:
-      - "8000:8000"
-      - "9443:9443"
+      - 8000:8000
+      - 9443:9443
     volumes:
-      - "/var/run/docker.sock:/var/run/docker.sock"
-      - "./data:/data"
+      - /var/run/docker.sock:/var/run/docker.sock
+      - ./data:/data

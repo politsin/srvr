@@ -5,17 +5,17 @@ services:
     hostname: prometheus
     container_name: prometheus
     restart: unless-stopped
-    ports:
-      - "9090:9090"
     logging:
       options:
         max-file: "3"
-        max-size: "50m"
+        max-size: 50m
     command:
       - --config.file=/etc/prometheus/prometheus.yml
       - --web.config.file=/etc/prometheus/web.yml
+    ports:
+      - 9090:9090
     volumes:
       # - "/opt/apps/certbot/tls/private.pem:/tls/private.pem"
       # - "/opt/apps/certbot/tls/fullchain.pem:/tls/fullchain.pem"
-      - "./db/:/root/.prometheus/"
-      - "./etc:/etc/prometheus"
+      - ./db:/prometheus
+      - ./etc:/etc/prometheus

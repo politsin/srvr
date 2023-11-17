@@ -10,31 +10,31 @@ services:
     logging:
       options:
         max-file: "3"
-        max-size: "50m"
+        max-size: 50m
     volumes:
-      - "./etc/enabled_plugins:/etc/rabbitmq/enabled_plugins"
-      - "./etc/rabbitmq.conf:/etc/rabbitmq/rabbitmq.conf"
-      - "./etc/.erlang.cookie:/var/lib/rabbitmq/.erlang.cookie"
-      - "./data:/var/lib/rabbitmq/mnesia"
-      - "/opt/apps/certbot/tls/private.pem:/tls/private.pem"
-      - "/opt/apps/certbot/tls/fullchain.pem:/tls/fullchain.pem"
+      - ./etc/enabled_plugins:/etc/rabbitmq/enabled_plugins
+      - ./etc/rabbitmq.conf:/etc/rabbitmq/rabbitmq.conf
+      - ./etc/.erlang.cookie:/var/lib/rabbitmq/.erlang.cookie
+      - ./data:/var/lib/rabbitmq/mnesia
+      - /opt/apps/certbot/tls/private.pem:/tls/private.pem
+      - /opt/apps/certbot/tls/fullchain.pem:/tls/fullchain.pem
     ports:
       # mqtt
-      - "1883:1883"
-      - "8883:8883"
+      - 1883:1883
+      - 8883:8883
       # mqtt-/ws
-      # "1884:1884"
-      - "8884:8884"
+      # 1884:1884
+      - 8884:8884
       # amqp
-      - "5671:5671"
-      - "5672:5672"
+      - 5671:5671
+      - 5672:5672
       # web managment
-      - "15671:15671"
-      # - "15672:15672"
-      # - "35197:35197"
-      # - "15673:15673"
-      # - "15674:15674"
-      # - "61613:61613"
+      - 15671:15671
+      # 15672:15672
+      # 35197:35197
+      # 15673:15673
+      # 15674:15674
+      # 61613:61613
       # Clustering:
-      - "4369:4369"
-      - "25672:25672"
+      - 4369:4369
+      - 25672:25672
