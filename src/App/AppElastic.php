@@ -17,6 +17,10 @@ class AppElastic extends AppBase {
    */
   public function run() : bool {
     $this->cp($this->name);
+    $this->setPass();
+    $this->setPass('KIBANA_PASSWORD=');
+    $this->setPass('ENCRYPTION_KEY=');
+    $this->setEnv();
     return 1;
   }
 
