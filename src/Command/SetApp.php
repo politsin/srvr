@@ -51,24 +51,25 @@ class SetApp extends Command {
    * Available apps.
    */
   private function apps(array $user = []) : array {
+    // 10 из 18
     $apps = [
-      'AppBridge' => 'bridge - php bridge MQTT to influx',
-      'AppCertbot' => 'certbot - Lets Encrypt certs',
-      'AppChatwoot' => 'chatwoot',
-      'AppClickhouse' => 'clickhouse',
-      'AppElastic' => 'elastic search with kibana',
-      'AppExim' => 'exim - mail server',
+      'AppBridge' => '[ ] bridge - php bridge MQTT to influx',
+      'AppCertbot' => '[-] certbot - Lets Encrypt certs',
+      'AppChatwoot' => '[ ] chatwoot',
+      'AppClickhouse' => '[ ] clickhouse',
+      'AppElastic' => '[ ] elastic search with kibana',
+      'AppExim' => '[ ] exim - mail server',
       'AppGrafana' => 'grafana - dashboard',
       'AppInflux' => 'influx - time series db',
-      'AppMattermost' => 'mattermost',
-      'AppMetabase' => 'metabase - bi',
-      'AppOpenVpn' => 'openvpn - vpn',
-      'AppPortainer' => 'portainer - docker dashboard',
+      'AppMattermost' => '[ ] mattermost',
+      'AppMetabase' => '[ ] metabase - bi',
+      'AppOpenVpn' => '[ ] openvpn - vpn',
+      'AppPortainer' => '[ ] portainer - docker dashboard',
       'AppPrometheus' => 'prometheus - metrics',
       'AppRabbitMQ' => 'rabbitmq - message broker',
       'AppRedis' => 'redis - key value store',
       'AppSocks5' => 'socks5 proxy',
-      'AppTelegraf' => 'telegraf - metrics',
+      'AppTelegraf' => '[ ] telegraf - metrics',
       'AppWireGuard' => 'wireguard - vpn',
     ];
     // Filter apps from user input.
