@@ -19,13 +19,13 @@ services:
       - "./etc/users.xml:/etc/clickhouse-server/users.xml"
       - "./etc/config.xml:/etc/clickhouse-server/config.xml"
       - "./etc/log_disable.xml:/etc/clickhouse-server/config.d/log_disable.xml"
-      - "./etc/dhparam.pem:/etc/clickhouse-server/dhparam.pem"
       # <!-- fullchain.pem -out server.crt -->
       # <!-- private.pem -out private.key -->
       # openssl rsa -outform der -in ./private.pem -out server.key
       # openssl rsa -outform der -in private.pem -out private.key
-      - "./etc/cert.pem:/etc/clickhouse-server/server.crt"
-      - "./etc/private.pem:/etc/clickhouse-server/server.key"
+      - "./tls/dhparam-2048.pem:/etc/clickhouse-server/dhparam.pem"
+      - "./tls/fullchain.pem:/etc/clickhouse-server/server.crt"
+      - "./tls/private.pem:/etc/clickhouse-server/server.key"
     ports:
       - "8123:8123"
       # tls not working
