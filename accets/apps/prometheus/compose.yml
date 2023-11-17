@@ -2,7 +2,7 @@ version: "3"
 services:
   prometheus:
     image: prom/prometheus
-    hostname: "prometheus"
+    hostname: prometheus
     container_name: prometheus
     restart: unless-stopped
     ports:

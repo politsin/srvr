@@ -56,7 +56,7 @@ class SetApp extends Command {
       'AppBridge' => '[ ] bridge - php bridge MQTT to influx',
       'AppCertbot' => '[-] certbot - Lets Encrypt certs',
       'AppChatwoot' => '[ ] chatwoot',
-      'AppClickhouse' => '[ ] clickhouse',
+      'AppClickhouse' => 'clickhouse',
       'AppElastic' => '[ ] elastic search with kibana',
       'AppExim' => '[ ] exim - mail server',
       'AppGrafana' => 'grafana - dashboard',
