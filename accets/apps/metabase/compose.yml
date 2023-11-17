@@ -19,8 +19,8 @@ services:
       MB_DB_DBNAME: metabase
       MB_DB_PORT: 5432
       MB_DB_HOST: postgres
-      MB_DB_USER_FILE: $USERNAME
-      MB_DB_PASS_FILE: $PASSWORD
+      MB_DB_USER: $USERNAME
+      MB_DB_PASS: $PASSWORD
     volumes:
       - "./data:/metabase-data"
       - /dev/urandom:/dev/random:ro
@@ -35,8 +35,8 @@ services:
     hostname: postgres
     environment:
       POSTGRES_DB: metabase
-      POSTGRES_USER_FILE: $USERNAME
-      POSTGRES_PASSWORD_FILE: $PASSWORD
+      POSTGRES_USER: $USERNAME
+      POSTGRES_PASSWORD: $PASSWORD
     volumes:
       - ./db:/var/lib/postgresql/data
     networks:
