@@ -2,8 +2,6 @@
 
 namespace Srvr\App;
 
-use Symfony\Component\Console\Style\SymfonyStyle;
-
 /**
  * Telegraf - metrics.
  */
@@ -17,6 +15,7 @@ class AppTelegraf extends AppBase {
    */
   public function run() : bool {
     $this->cp($this->name);
+    $this->setHost();
     return 1;
   }
 

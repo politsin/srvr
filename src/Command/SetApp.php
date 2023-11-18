@@ -51,7 +51,7 @@ class SetApp extends Command {
    * Available apps.
    */
   private function apps(array $user = []) : array {
-    // 5 из 18
+    // 4 из 18
     $apps = [
       'AppBridge' => '[ ] bridge - php bridge MQTT to influx',
       'AppCertbot' => '[-] certbot - Lets Encrypt certs',
@@ -69,7 +69,7 @@ class SetApp extends Command {
       'AppRabbitMQ' => 'rabbitmq - message broker',
       'AppRedis' => 'redis - key value store',
       'AppSocks5' => 'socks5 proxy',
-      'AppTelegraf' => '[ ] telegraf - metrics',
+      'AppTelegraf' => 'telegraf - metrics',
       'AppWireGuard' => 'wireguard - vpn',
     ];
     // Filter apps from user input.
