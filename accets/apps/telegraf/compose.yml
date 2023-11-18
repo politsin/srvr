@@ -1,0 +1,25 @@
+version: "3"
+services:
+  telegraf:
+    image: telegraf:alpine
+    hostname: telegraf
+    container_name: telegraf
+    restart: unless-stopped
+    logging:
+      options:
+        max-file: "3"
+        max-size: 50m
+    # ports:
+    # - 8125:8125
+    # - 8092:8092
+    # - 8094:8094
+    environment:
+      HOST_ETC: /hostfs/etc
+      HOST_PROC: /hostfs/proc
+      HOST_SYS: /hostfs/sys
+      HOST_VAR: /hostfs/var
+      HOST_RUN: /hostfs/run
+      HOST_MOUNT_PREFIX: /hostfs
+    volumes:
+      - ./etc/telegraf.conf:/etc/telegraf/telegraf.conf:ro
+      - /:/hostfs:ro
