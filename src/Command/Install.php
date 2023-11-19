@@ -43,7 +43,7 @@ class Install extends Command {
         $this->installX64($info);
         break;
 
-      case 'arm':
+      case 'aarch64':
         $this->installArm($info);
         break;
 
@@ -81,7 +81,7 @@ class Install extends Command {
     // OS Description.
     switch ($info['Distributor ID']) {
       case 'Ubuntu':
-        $this->io->comment('Ubuntu 22.04.2 LTS');
+        $this->io->comment('Ubuntu 22.04 LTS');
         foreach ($this->installSteps() as $key => $value) {
           $step = "Srvr\Step\\" . $key;
           (new $step())->run($value, $this->io);

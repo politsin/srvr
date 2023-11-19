@@ -18,7 +18,6 @@ fi
 if [ ! -f ./tls/dhparam-2048.pem ]; then
   openssl dhparam -out ./tls/dhparam-2048.pem 2048
 fi
-chown -R 100:100 ./tls/*
 
 # dkim:
 if [ ! -f ./tls/dkim.pem ]; then
@@ -29,6 +28,6 @@ key="$( cat ./tls/dkim-public.pem |  awk '(NR>1)' | sed '$d' | tr -d '\n' )"
 echo "DKIM TXT smail._domainkey"
 echo "v=DKIM1; h=sha256; k=rsa; p=$key"
 
-chown -R 100:100 ./tls/*
+chown -R 999:999 ./tls/*
 
 docker-compose up -d
