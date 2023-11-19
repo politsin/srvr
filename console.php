@@ -17,7 +17,7 @@ $app = new Application('Console App', 'v1.0');
 $app->add(new Install());
 $app->add(new SetApp());
 $app->add(new SetCron());
-if ($_ENV['APP_TEMPLATE']) {
+if ($_ENV['APP_TEMPLATE'] ?? FALSE) {
   $app->setDefaultCommand($_ENV['APP_TEMPLATE'], TRUE);
 }
 // Run.
