@@ -59,14 +59,14 @@ class Install extends Command {
    */
   private function installSteps() : array {
     $steps = [
-      // 'Step1Clear' => "Clear apache, exim, etc",
-      // 'Step2Update' => "Update system",
-      // 'Step2Util' => "Util",
-      // // 'Step3TimeZone' => "Set TimeZone",
-      // 'Step3Bash' => "Set Bash",
-      // 'Step3VsCode' => "Set file monitor",
-      // 'Step4Swap' => "Set Swap",
-      // 'Step5Docker' => "Install Docker",
+      'Step1Clear' => "Clear apache, exim, etc",
+      'Step2Update' => "Update system",
+      'Step2Util' => "Util",
+      // 'Step3TimeZone' => "Set TimeZone",
+      'Step3Bash' => "Set Bash",
+      'Step3VsCode' => "Set file monitor",
+      'Step4Swap' => "Set Swap",
+      'Step5Docker' => "Install Docker",
       'Step6DockerProxy' => "Docker Proxy",
       'Step7DockerRest' => "Docker Rest",
     ];
