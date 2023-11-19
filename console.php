@@ -4,6 +4,7 @@
 require __DIR__ . '/vendor/autoload.php';
 use Srvr\Command\Install;
 use Srvr\Command\SetApp;
+use Srvr\Command\SetCron;
 use Symfony\Component\Console\Application;
 use Symfony\Component\Dotenv\Dotenv;
 
@@ -15,6 +16,9 @@ $dotenv->load("{$_SERVER['PWD']}/.env");
 $app = new Application('Console App', 'v1.0');
 $app->add(new Install());
 $app->add(new SetApp());
-$app->setDefaultCommand($_ENV['APP_TEMPLATE'], TRUE);
+$app->add(new SetCron());
+if ($_ENV['APP_TEMPLATE']) {
+  $app->setDefaultCommand($_ENV['APP_TEMPLATE'], TRUE);
+}
 // Run.
 $app->run();
