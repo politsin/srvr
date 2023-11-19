@@ -99,6 +99,20 @@ class Install extends Command {
    */
   private function installArm(array $info) : void {
     $this->io->block('Arm', 'info');
+    // OS Description.
+    switch ($info['Distributor ID']) {
+      case 'Ubuntu':
+        $this->io->comment('Ubuntu 22.04 LTS');
+        foreach ($this->installSteps() as $key => $value) {
+          $step = "Srvr\Step\\" . $key;
+          (new $step())->run($value, $this->io);
+        }
+        break;
+
+      default:
+        $this->io->block("Not supported {$info['Distributor ID']}", 'error');
+        break;
+    }
   }
 
   /**
