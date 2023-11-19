@@ -1,5 +1,6 @@
 #!/bin/bash
 
+apt update -y
 apt install php \
             php-cli \
             php-dev \
