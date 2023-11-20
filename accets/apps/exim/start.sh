@@ -1,10 +1,8 @@
 #!/bin/bash
 
-linuxuser = '100:100'
-
 cd /opt/apps/exim
 mkdir -p ./log
-chown -R $linuxuser ./log
+
 chmod -R 755 ./log
 chmod -R 644 ./log/*
 
@@ -30,6 +28,7 @@ key="$( cat ./tls/dkim-public.pem |  awk '(NR>1)' | sed '$d' | tr -d '\n' )"
 echo "DKIM TXT smail._domainkey"
 echo "v=DKIM1; h=sha256; k=rsa; p=$key"
 
-chown -R $linuxuser ./tls/*
+chown -R 100:100 ./tls/*
+chown -R 100:100 ./log
 
 docker-compose up -d
