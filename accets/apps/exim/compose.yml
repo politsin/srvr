@@ -5,6 +5,7 @@ services:
     container_name: exim
     hostname: exim
     restart: unless-stopped
+    user: 999:999
     ports:
       - "25:25"
       - "465:465"

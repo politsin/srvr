@@ -2,7 +2,7 @@
 
 cd /opt/apps/exim
 mkdir -p ./log
-chown -R 100:100 ./log
+chown -R 999:999 ./log
 chmod -R 755 ./log
 chmod -R 644 ./log/*
 
