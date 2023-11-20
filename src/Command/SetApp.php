@@ -58,7 +58,7 @@ class SetApp extends Command {
       'AppChatwoot' => '[ ] chatwoot',
       'AppClickhouse' => 'clickhouse',
       'AppElastic' => 'elastic search with kibana',
-      'AppExim' => '[ ] exim - mail server',
+      'AppExim' => 'exim - mail server',
       'AppGrafana' => 'grafana - dashboard',
       'AppInflux' => 'influx - time series db',
       'AppMattermost' => '[ ] mattermost',
