@@ -1,2 +1,3 @@
 # Git ignore vhosts
 data/*
+redis/*

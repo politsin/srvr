@@ -51,11 +51,10 @@ class SetApp extends Command {
    * Available apps.
    */
   private function apps(array $user = []) : array {
-    // 4 из 18
+    // 2 из 18
     $apps = [
-      'AppPhp' => 'php - service',
       'AppCertbot' => '[-] certbot - Lets Encrypt certs',
-      'AppChatwoot' => '[ ] chatwoot',
+      'AppChatwoot' => 'chatwoot',
       'AppClickhouse' => 'clickhouse',
       'AppElastic' => 'elastic search with kibana',
       'AppExim' => 'exim - mail server',
@@ -64,6 +63,7 @@ class SetApp extends Command {
       'AppMattermost' => '[ ] mattermost',
       'AppMetabase' => 'metabase - bi',
       'AppOpenVpn' => 'openvpn - vpn',
+      'AppPhp' => 'php - service',
       'AppPortainer' => 'portainer - docker dashboard',
       'AppPrometheus' => 'prometheus - metrics',
       'AppRabbitMQ' => 'rabbitmq - message broker',

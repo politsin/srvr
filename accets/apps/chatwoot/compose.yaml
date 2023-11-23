@@ -10,11 +10,12 @@ services:
   rails:
     <<: *base
     external_links:
-      - postgres:postgres
-      - redis:redis
       # - postgres-XXXX-chat:postgres
       # - redis-XXXX-chat:redis
+      - postgres:postgres
+      - redis:redis
     depends_on:
+      - redis
       - postgres
     networks:
       - chatwoot
@@ -29,6 +30,7 @@ services:
 
   sidekiq:
     depends_on:
+      - redis
       - postgres
     <<: *base
     external_links:
@@ -47,15 +49,26 @@ services:
     restart: always
     networks:
       - chatwoot
-    ports:
-      # - '5432:5432'
-      - 0.0.0.0:5432:5432
-    volumes:
-      - ./data/postgres15:/var/lib/postgresql/data
     environment:
       - POSTGRES_DB=$POSTGRES_DATABASE
       - POSTGRES_USER=$POSTGRES_USERNAME
       - POSTGRES_PASSWORD=$POSTGRES_PASSWORD
+    # ports:
+    # - 127.0.0.1:5432:5432
+    volumes:
+      - ./data/postgres15:/var/lib/postgresql/data
+
+  redis:
+    image: redis:alpine
+    restart: always
+    command: ["sh", "-c", 'redis-server --requirepass "$REDIS_PASSWORD"']
+    env_file: .env
+    networks:
+      - chatwoot
+    # ports:
+    # - 0.0.0.0:6379:6379
+    volumes:
+      - ./redis:/data
 
 networks:
   chatwoot:
