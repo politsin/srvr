@@ -53,7 +53,7 @@ class SetApp extends Command {
   private function apps(array $user = []) : array {
     // 4 из 18
     $apps = [
-      'AppBridge' => '[ ] bridge - php bridge MQTT to influx',
+      'AppPhp' => 'php - service',
       'AppCertbot' => '[-] certbot - Lets Encrypt certs',
       'AppChatwoot' => '[ ] chatwoot',
       'AppClickhouse' => 'clickhouse',

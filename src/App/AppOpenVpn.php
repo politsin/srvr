@@ -2,8 +2,6 @@
 
 namespace Srvr\App;
 
-use Symfony\Component\Console\Style\SymfonyStyle;
-
 /**
  * Openvpn - vpn.
  */
@@ -16,7 +14,7 @@ class AppOpenVpn extends AppBase {
    * Run!
    */
   public function run() : bool {
-    // todo: можно ещё сделать автоматическое скачивание конфига
+    // @todo можно ещё сделать автоматическое скачивание конфига.
     $this->cp($this->name);
     return 1;
   }

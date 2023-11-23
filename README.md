@@ -4,6 +4,19 @@
 
 - TLS users: (999:999)
 - File mon
+- LogRotate: nginx, exim, ...
+- Docker: /etc/docker/daemon.json
+
+## Dokcer-images
+
+- Source:
+  - hub: https://hub.docker.com/repositories/synstd
+  - repo: https://github.com/politsin/docker-build
+- Images:
+  - php
+  - exim
+  - backup
+  - mattermost
 
 ## Ubuntu
 

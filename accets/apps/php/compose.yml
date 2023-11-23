@@ -1,0 +1,15 @@
+version: "3"
+services:
+  portainer:
+    image: synstd/php-service
+    hostname: php-service
+    container_name: php-service
+    restart: unless-stopped
+    logging:
+      options:
+        max-file: "3"
+        max-size: 50m
+    # ports:
+    # - 181:80
+    volumes:
+      - ./service:/opt/app/php/service
