@@ -2,8 +2,6 @@
 
 namespace Srvr\App;
 
-use Symfony\Component\Console\Style\SymfonyStyle;
-
 /**
  * Certbot - Lets Encrypt certs.
  */
@@ -16,23 +14,21 @@ class AppCertbot extends AppBase {
    * Run!
    */
   public function run() : bool {
-    // todo:
-    // recurrent.sh $domains[0]
+    // @todo
     // Cron (README.md)
-    // docker-proxy
-    // $this->exec(["chown", "999:999", "/opt/apps/certbot/tls/private.pem"]);
-    // $this->exec(["chown", "999:999", "/opt/apps/certbot/tls/fullchain.pem"]);
+    // docker-proxy.
     $this->cp($this->name);
-    $domains = $this->io->ask('Domains', NULL, function ($answer) {
+    $domains = $this->io->ask('Domains', $_ENV['HOST'], function ($answer) {
       $answer = str_replace(",", " ", $answer);
       $answer = str_replace("  ", " ", $answer);
       return explode(" ", $answer);
     });
-    $env = "";
-    foreach ($domains as $key => $value) {
-      $env .= "-d {$value} ";
+    $hosts = "";
+    foreach ($domains as $value) {
+      $hosts .= "-d {$value} ";
     }
-    $this->setEnv("HOSTS=", $env);
+    $this->setEnv("HOSTS=", $hosts);
+    $this->sedFile('${HOST}', $_ENV['HOST'], "recurrent.sh");
 
     return 1;
   }
