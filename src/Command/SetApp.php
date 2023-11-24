@@ -51,16 +51,20 @@ class SetApp extends Command {
    * Available apps.
    */
   private function apps(array $user = []) : array {
-    // 1 из 18
+    // @todo cron!
+    // certbot - cron, nginx
+    // elastic - connect kibana
+    // mattermost - sendmail
+    // log-rotate
     $apps = [
-      'AppCertbot' => '[-] certbot - Lets Encrypt certs',
+      'AppCertbot' => 'certbot - Lets Encrypt certs',
       'AppChatwoot' => 'chatwoot',
       'AppClickhouse' => 'clickhouse',
       'AppElastic' => 'elastic search with kibana',
       'AppExim' => 'exim - mail server',
       'AppGrafana' => 'grafana - dashboard',
       'AppInflux' => 'influx - time series db',
-      'AppMattermost' => '[ ] mattermost',
+      'AppMattermost' => 'mattermost',
       'AppMetabase' => 'metabase - bi',
       'AppOpenVpn' => 'openvpn - vpn',
       'AppPhp' => 'php - service',
