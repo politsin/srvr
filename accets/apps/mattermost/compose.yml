@@ -1,0 +1,27 @@
+version: "3"
+services:
+  mattermost:
+    image: synstd/mattermost
+    hostname: mattermost
+    container_name: mattermost
+    restart: unless-stopped
+    logging:
+      options:
+        max-file: "3"
+        max-size: 50m
+    ports:
+      - 8065:8065
+    volumes:
+      - ./config:/opt/mattermost/config:rw
+      - ./data:/opt/mattermost/data:rw
+  postgres:
+    image: postgres:15
+    restart: always
+    environment:
+      - POSTGRES_DB=$POSTGRES_DATABASE
+      - POSTGRES_USER=$POSTGRES_USERNAME
+      - POSTGRES_PASSWORD=$POSTGRES_PASSWORD
+    # ports:
+    # - 127.0.0.1:5432:5432
+    volumes:
+      - ./db/postgres15:/var/lib/postgresql/data

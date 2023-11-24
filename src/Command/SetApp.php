@@ -51,7 +51,7 @@ class SetApp extends Command {
    * Available apps.
    */
   private function apps(array $user = []) : array {
-    // 2 из 18
+    // 1 из 18
     $apps = [
       'AppCertbot' => '[-] certbot - Lets Encrypt certs',
       'AppChatwoot' => 'chatwoot',
