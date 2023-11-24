@@ -14,9 +14,7 @@ class AppCertbot extends AppBase {
    * Run!
    */
   public function run() : bool {
-    // @todo
-    // Cron (README.md)
-    // docker-proxy.
+    // @todo reload tls: proxy, rabbit, influx.
     $this->cp($this->name);
     $domains = $this->io->ask('Domains', $_ENV['HOST'], function ($answer) {
       $answer = str_replace(",", " ", $answer);
