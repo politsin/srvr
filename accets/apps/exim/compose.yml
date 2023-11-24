@@ -13,6 +13,6 @@ services:
         max-file: "3"
         max-size: "50m"
     volumes:
-      - "./etc/exim.conf:/etc/exim/exim.conf:ro"
-      - "./log:/var/log/exim"
-      - "./tls:/etc/tls:ro"
+      - ./etc/exim.conf:/etc/exim/exim.conf:ro
+      - ./log:/var/log/exim
+      - ./tls:/etc/tls:ro
