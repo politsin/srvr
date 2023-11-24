@@ -19,3 +19,5 @@ services:
       - ./vhosts:/etc/nginx/vhosts:ro
       - ./default/www:/var/www/html:ro
       - /opt/sites:/opt/sites:rw
+      # - /opt/apps/certbot/tls/fullchain.pem:/etc/nginx/default/ssl/proxy.crt:ro
+      # - /opt/apps/certbot/tls/private.pem:/etc/nginx/default/ssl/proxy.key:ro
