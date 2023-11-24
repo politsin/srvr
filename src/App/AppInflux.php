@@ -2,8 +2,6 @@
 
 namespace Srvr\App;
 
-use Symfony\Component\Console\Style\SymfonyStyle;
-
 /**
  * Influx - time series db.
  */

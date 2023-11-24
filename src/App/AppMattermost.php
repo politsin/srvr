@@ -2,22 +2,19 @@
 
 namespace Srvr\App;
 
-use Symfony\Component\Console\Style\SymfonyStyle;
-
 /**
  * Chatwoot.
  */
 class AppMattermost extends AppBase {
 
-
   //phpcs:ignore
-  protected string $name = 'bridge';
+  protected string $name = 'mattermost';
 
   /**
    * Run!
    */
   public function run() : bool {
-    $this->exec(['whoami']);
+    $this->cp($this->name);
     return 1;
   }
 
