@@ -9,19 +9,40 @@ services:
       options:
         max-file: "3"
         max-size: 50m
+    environment:
+      MM_USERNAME: $USERNAME
+      MM_PASSWORD: $PASSWORD
+      # MM_SQLSETTINGS_DRIVERNAME: mysql
+      # MM_SQLSETTINGS_DATASOURCE: $DB_USER:$DB_PASS@mysql:5432/$DB?charset=utf8mb4,utf8
+      MM_SQLSETTINGS_DRIVERNAME: postgres
+      MM_SQLSETTINGS_DATASOURCE: postgres://$DB_USER:$DB_PASS@postgres:5432/$DB?sslmode=disable
     ports:
       - 8065:8065
     volumes:
       - ./config:/opt/mattermost/config:rw
       - ./data:/opt/mattermost/data:rw
+    entrypoint:
+      - /opt/mattermost/bin/mattermost
   postgres:
     image: postgres:15
     restart: always
     environment:
-      - POSTGRES_DB=$POSTGRES_DATABASE
-      - POSTGRES_USER=$POSTGRES_USERNAME
-      - POSTGRES_PASSWORD=$POSTGRES_PASSWORD
+      POSTGRES_DB: $DB
+      POSTGRES_USER: $DB_USER
+      POSTGRES_PASSWORD: $DB_PASS
     # ports:
     # - 127.0.0.1:5432:5432
     volumes:
       - ./db/postgres15:/var/lib/postgresql/data
+  mysql:
+    image: mariadb:10.5.15
+    restart: always
+    environment:
+      MYSQL_DATABASE: $DB
+      MYSQL_USER: $DB_USER
+      MYSQL_PASSWORD: $DB_PASS
+      MYSQL_ROOT_PASSWORD: $DB_PASS
+    # ports:
+    # - 127.0.0.1:5432:5432
+    volumes:
+      - ./db/mysql:/var/lib/mysql

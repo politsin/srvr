@@ -15,6 +15,8 @@ class AppMattermost extends AppBase {
    */
   public function run() : bool {
     $this->cp($this->name);
+    $this->setUser();
+    $this->setPass();
     return 1;
   }
 
