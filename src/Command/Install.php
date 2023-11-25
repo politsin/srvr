@@ -44,6 +44,7 @@ class Install extends Command {
         break;
 
       case 'aarch64':
+        // Apt install lm-sensors i2c-tools.
         $this->installArm($info);
         break;
 
@@ -82,6 +83,14 @@ class Install extends Command {
     switch ($info['Distributor ID']) {
       case 'Ubuntu':
         $this->io->comment('Ubuntu 22.04 LTS');
+        foreach ($this->installSteps() as $key => $value) {
+          $step = "Srvr\Step\\" . $key;
+          (new $step())->run($value, $this->io);
+        }
+        break;
+
+      case 'Debian':
+        $this->io->comment('Debian 11 Bullseye');
         foreach ($this->installSteps() as $key => $value) {
           $step = "Srvr\Step\\" . $key;
           (new $step())->run($value, $this->io);
