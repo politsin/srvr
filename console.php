@@ -2,6 +2,8 @@
 <?php
 
 require __DIR__ . '/vendor/autoload.php';
+
+use Srvr\Command\Check;
 use Srvr\Command\Install;
 use Srvr\Command\SetApp;
 use Srvr\Command\SetCron;
@@ -18,8 +20,9 @@ if (file_exists("{$dir}/.env.local")) {
 
 // Symfony app.
 $app = new Application('Console App', 'v1.0');
-$app->add(new Install());
+$app->add(new Check());
 $app->add(new SetApp());
+$app->add(new Install());
 $app->add(new SetCron());
 if ($_ENV['APP_TEMPLATE'] ?? FALSE) {
   $app->setDefaultCommand($_ENV['APP_TEMPLATE'], TRUE);
