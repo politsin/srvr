@@ -15,6 +15,7 @@ $dotenv->load("{$dir}/.env");
 if (file_exists("{$dir}/.env.local")) {
   $dotenv->load("{$dir}/.env.local");
 }
+
 // Symfony app.
 $app = new Application('Console App', 'v1.0');
 $app->add(new Install());
