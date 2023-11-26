@@ -22,3 +22,7 @@ services:
       - --agree-tos
       - --no-eff-email
       - $HOSTS
+      # - $HOSTS1
+      # - $HOSTS2
+      # - $HOSTS3
+      # - $HOSTS4

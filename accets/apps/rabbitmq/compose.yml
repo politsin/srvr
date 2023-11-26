@@ -15,8 +15,9 @@ services:
     volumes:
       - ./etc/enabled_plugins:/etc/rabbitmq/enabled_plugins
       - ./etc/rabbitmq.conf:/etc/rabbitmq/rabbitmq.conf
-      - ./etc/.erlang.cookie:/var/lib/rabbitmq/.erlang.cookie
       - ./data:/var/lib/rabbitmq/mnesia
+      # erlang.cookie after mnesia
+      - ./etc/.erlang.cookie:/var/lib/rabbitmq/.erlang.cookie
       - /opt/apps/certbot/tls/private.pem:/tls/private.pem
       - /opt/apps/certbot/tls/fullchain.pem:/tls/fullchain.pem
     ports:

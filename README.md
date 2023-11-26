@@ -5,6 +5,8 @@
 - TLS users: (999:999)
 - File mon
 - LogRotate: nginx, exim, ...
+- CP if exists
+- rabbitmq init.sh
 - Docker: /etc/docker/daemon.json
 
 ## Dokcer-images
