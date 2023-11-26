@@ -9,9 +9,12 @@ use Symfony\Component\Console\Application;
 use Symfony\Component\Dotenv\Dotenv;
 
 // Sup .env vars. print_r($_ENV);
+$dir = $_SERVER['PWD'];
 $dotenv = new Dotenv();
-$dotenv->load("{$_SERVER['PWD']}/.env");
-
+$dotenv->load("{$dir}/.env");
+if (file_exists("{$dir}/.env.local")) {
+  $dotenv->load("{$dir}/.env.local");
+}
 // Symfony app.
 $app = new Application('Console App', 'v1.0');
 $app->add(new Install());
