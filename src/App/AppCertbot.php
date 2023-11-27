@@ -25,10 +25,12 @@ class AppCertbot extends AppBase {
     });
     $i = 0;
     foreach ($domains as $host) {
-      $i++;
-      // $this->sedFile("HOST={$value}", $_ENV['HOST'], "compose.yml");
-      // $this->echo("HOST{$i}= -d {$host}", ".env");
-      $this->io->warning("HOST{$i}= -d {$host}");
+      if (strpos($host, ".") && $i++) {
+        $this->setHost("HOST{$i}=");
+        // $this->sedFile("HOST={$value}", $_ENV['HOST'], "compose.yml");
+        // $this->echo("HOST{$i}= -d {$host}", ".env");
+        $this->io->warning("HOST{$i}= -d {$host}");
+      }
     }
     $this->sedFile('${HOST}', $_ENV['HOST'], "recurrent.sh");
 
