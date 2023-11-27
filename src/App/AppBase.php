@@ -26,13 +26,14 @@ abstract class AppBase {
   /**
    * Cp Directory.
    */
-  public function cp(string $name) : string {
+  public function cp(string $name) : bool {
     $this->exec(['mkdir', '-p', '/opt/apps']);
     if (!is_dir("/opt/apps/$name")) {
-      return $this->exec(['cp', '-r', "{$_ENV['ACCETS']}/apps/$name", '/opt/apps']);
+      $this->exec(['cp', '-r', "{$_ENV['ACCETS']}/apps/$name", '/opt/apps']);
+      return TRUE;
     }
     $this->io->error("{$name} already exists");
-    return "";
+    return FALSE;
   }
 
   /**
