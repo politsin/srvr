@@ -28,7 +28,11 @@ abstract class AppBase {
    */
   public function cp(string $name) : string {
     $this->exec(['mkdir', '-p', '/opt/apps']);
-    return $this->exec(['cp', '-r', "{$_ENV['ACCETS']}/apps/$name", '/opt/apps']);
+    if (!is_dir("/opt/apps/$name")) {
+      return $this->exec(['cp', '-r', "{$_ENV['ACCETS']}/apps/$name", '/opt/apps']);
+    }
+    $this->io->error("{$name} already exists");
+    return "";
   }
 
   /**
@@ -51,7 +55,7 @@ abstract class AppBase {
    */
   public function echo(string $env, string $file) : string {
     $name = $this->name;
-    $this->io->success("$name: echo {$val} > {$file}");
+    $this->io->success("$name: echo {$env} > {$file}");
     file_put_contents("/opt/apps/{$name}/$file", $env);
     return "";
   }
