@@ -14,7 +14,6 @@ class AppRabbitMQ extends AppBase {
    * Run!
    */
   public function run() : bool {
-    $this->cp($this->name);
     if ($this->cp($this->name)) {
       $pass = $this->genPass();
       $this->sedFile("default_pass =", "default_pass = $pass", "etc/rabbitmq.conf");
