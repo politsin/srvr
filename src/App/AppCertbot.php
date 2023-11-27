@@ -17,16 +17,19 @@ class AppCertbot extends AppBase {
     // @todo reload tls: proxy, rabbit, influx.
     // @todo start.sh && recurrent.sh
     $this->cp($this->name);
-    $domains = $this->io->ask('Domains', $_ENV['HOST'], function ($answer) {
+    $this->setHost();
+    $domains = $this->io->ask('Domains', NULL, function ($answer) {
       $answer = str_replace(",", " ", $answer);
       $answer = str_replace("  ", " ", $answer);
       return explode(" ", $answer);
     });
-    $hosts = "";
-    foreach ($domains as $value) {
-      $hosts .= "-d {$value} ";
+    $i = 0;
+    foreach ($domains as $host) {
+      $i++;
+      // $this->sedFile("HOST={$value}", $_ENV['HOST'], "compose.yml");
+      // $this->echo("HOST{$i}= -d {$host}", ".env");
+      $this->io->warning("HOST{$i}= -d {$host}");
     }
-    $this->setEnv("HOSTS=", $hosts);
     $this->sedFile('${HOST}', $_ENV['HOST'], "recurrent.sh");
 
     return 1;
