@@ -93,12 +93,12 @@ class SetApp extends Command {
    */
   private function ask() : void {
     if (empty($_ENV['USER'])) {
-      $_ENV['USER'] = $this->io->ask('User', $_ENV['USER'], function ($answer) {
+      $_ENV['USER'] = $this->io->ask('User', $_ENV['USER'] ?? "", function ($answer) {
         return $answer;
       });
     }
     if (empty($_ENV['HOST'])) {
-      $_ENV['HOST'] = $this->io->ask('Host', $_ENV['HOST'], function ($answer) {
+      $_ENV['HOST'] = $this->io->ask('Host', $_ENV['HOST'] ?? "", function ($answer) {
         return $answer;
       });
     }
