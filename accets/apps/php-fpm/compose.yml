@@ -16,6 +16,8 @@ services:
       - ./www-home:/var/www:rw
       - ./run/php:/run/php:rw
       - ./root/.ssh:/root/.ssh:ro
-      - ./root/.bashrc:/root/.bashrc:rw
-      - ./root/.bash_profile:/root/.bash_profile:rw
-      - ./etc/crontabs:/var/spool/cron/crontabs:rw
+      - ./root/.bashrc:/root/.bashrc:ro
+      - ./root/.bash_profile:/root/.bash_profile:ro
+      - ./etc/php/www.conf:/etc/php/8.1/fpm/pool.d/www.conf:ro
+      - ./etc/php/opcache.ini:/etc/php/8.1/mods-available/opcache.ini:ro
+      - ./etc/cron/crontabs:/var/spool/cron/crontabs:rw
