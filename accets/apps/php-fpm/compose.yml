@@ -9,11 +9,12 @@ services:
       options:
         max-file: "3"
         max-size: "50m"
+    ports:
+      - 22:15
     volumes:
       - /opt/sites:/opt/sites:rw
       - ./www-home:/var/www:rw
       - ./run/php:/run/php:rw
-      - ./run/mysqld:/var/run/mysqld:rw
       - ./root/.ssh:/root/.ssh:ro
       - ./root/.bashrc:/root/.bashrc:rw
       - ./root/.bash_profile:/root/.bash_profile:rw

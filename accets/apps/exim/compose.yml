@@ -6,8 +6,8 @@ services:
     hostname: exim
     restart: unless-stopped
     ports:
-      - "25:25"
-      - "465:465"
+      - 25:25
+      - 465:465
     logging:
       options:
         max-file: "3"
