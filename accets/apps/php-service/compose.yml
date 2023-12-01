@@ -1,6 +1,6 @@
 version: "3"
 services:
-  portainer:
+  php-service:
     image: synstd/php-service
     hostname: php-service
     container_name: php-service

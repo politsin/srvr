@@ -39,3 +39,19 @@
 - Login: `root`:`orangepi`
 - `nmtui` - wifi tool -> connect to wifi
 - `ip a`
+
+## Todo
+
+https://askubuntu.com/questions/1472428/why-i-got-failed-to-allocate-directory-watch-too-many-open-files
+
+```
+sysctl fs.inotify
+fs.inotify.max_queued_events = 16384
+`fs.inotify.max_user_instances` = 128
+fs.inotify.max_user_watches = 65536
+```
+
+- `sysctl fs.inotify`
+  - `fs.inotify.max_user_instances = 128`
+- `sysctl -w fs.inotify.max_user_instances=256`
+- `sysctl -w fs.inotify.max_user_watches=256`
