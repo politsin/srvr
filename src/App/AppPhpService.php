@@ -5,10 +5,10 @@ namespace Srvr\App;
 /**
  * Php-service.
  */
-class AppPhp extends AppBase {
+class AppPhpService extends AppBase {
 
   //phpcs:ignore
-  protected string $name = 'php';
+  protected string $name = 'php-service';
 
   /**
    * Run!
