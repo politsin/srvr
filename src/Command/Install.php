@@ -37,6 +37,11 @@ class Install extends Command {
     $this->io = new SymfonyStyle($input, $output);
     $this->io->title('Install');
     $info = $this->currentSrvrInfo();
+    if (file_exists('/opt/docker-proxy')) {
+      $this->io->block('Already installed', 'error');
+      return 0;
+    }
+    $this->io->comment('Installing...');
     // Switch CPU Arvhitecture.
     switch ($info['arch']) {
       case 'x86_64':
