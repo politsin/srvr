@@ -4,7 +4,7 @@ services:
     image: telegraf:alpine
     hostname: telegraf
     container_name: telegraf
-    restart: unless-stopped
+    restart: always
     logging:
       options:
         max-file: "3"

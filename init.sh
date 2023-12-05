@@ -1,8 +1,7 @@
 #!/bin/bash
 
 apt update -y
-apt install php \
-            php-cli \
+apt install php-cli \
             php-dev \
             php-zip \
             php-pear \

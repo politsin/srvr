@@ -4,7 +4,7 @@ services:
     image: clickhouse/clickhouse-server:latest-alpine
     hostname: $HOST
     container_name: clickhouse
-    restart: unless-stopped
+    restart: always
     logging:
       options:
         max-file: "3"

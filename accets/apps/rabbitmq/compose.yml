@@ -4,7 +4,7 @@ services:
     image: rabbitmq:management
     hostname: mqtt
     container_name: rabbitmq
-    restart: unless-stopped
+    restart: always
     user: 999:999
     environment:
       RABBITMQ_USE_LONGNAME: "true"

@@ -4,7 +4,7 @@ services:
     image: umputun/dockvpn
     hostname: openvpn
     container_name: openvpn
-    restart: unless-stopped
+    restart: always
     privileged: true
     logging:
       options:

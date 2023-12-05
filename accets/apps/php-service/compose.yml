@@ -4,7 +4,7 @@ services:
     image: synstd/php-service
     hostname: php-service
     container_name: php-service
-    restart: unless-stopped
+    restart: always
     logging:
       options:
         max-file: "3"

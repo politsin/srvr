@@ -4,7 +4,7 @@ services:
     image: portainer/portainer-ce:latest
     hostname: portainer
     container_name: portainer
-    restart: unless-stopped
+    restart: always
     logging:
       options:
         max-file: "3"

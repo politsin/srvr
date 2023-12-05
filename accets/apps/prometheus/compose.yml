@@ -4,7 +4,7 @@ services:
     image: prom/prometheus
     hostname: prometheus
     container_name: prometheus
-    restart: unless-stopped
+    restart: always
     logging:
       options:
         max-file: "3"

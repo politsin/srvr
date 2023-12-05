@@ -4,7 +4,7 @@ services:
     image: weejewel/wg-easy
     hostname: wireguard
     container_name: wireguard
-    restart: unless-stopped
+    restart: always
     logging:
       options:
         max-file: "3"

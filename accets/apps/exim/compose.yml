@@ -4,7 +4,7 @@ services:
     image: synstd/exim:latest
     container_name: exim
     hostname: exim
-    restart: unless-stopped
+    restart: always
     ports:
       - 25:25
       - 465:465

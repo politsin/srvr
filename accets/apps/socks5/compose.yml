@@ -4,7 +4,7 @@ services:
     image: cooolin/socks5
     hostname: socks5
     container_name: socks5
-    restart: unless-stopped
+    restart: always
     logging:
       options:
         max-file: "3"

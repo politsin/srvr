@@ -4,7 +4,7 @@ services:
     image: influxdb:2.7
     hostname: influx
     container_name: influx
-    restart: unless-stopped
+    restart: always
     environment:
       TLS_KEY: /tls/private.pem
       TLS_CERT: /tls/fullchain.pem

@@ -4,7 +4,7 @@ services:
     image: redis:alpine
     hostname: redis
     container_name: redis
-    restart: unless-stopped
+    restart: always
     logging:
       options:
         max-file: "3"
