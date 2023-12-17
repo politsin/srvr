@@ -7,4 +7,4 @@ if [ "${1:0:1}" = '-' ]; then
 fi
 
 # exec "$@"
-influxd --tls-cert='/tls/fullchain.pem' --tls-key='/tls/private.pem'
+influxd --tls-cert='/tls/fullchain.pem' --tls-key='/tls/private.pem' --session-length=525600
