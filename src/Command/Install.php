@@ -24,6 +24,9 @@ class Install extends Command {
    * Config.
    */
   protected function configure() {
+    // @todo
+    // docker plugin install elastic/elastic-logging-plugin:8.5.3
+    // x.
     $this
       ->setName('install')
       ->setDescription('creates new server installation');
