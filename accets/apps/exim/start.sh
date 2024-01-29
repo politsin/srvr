@@ -1,6 +1,6 @@
 #!/bin/bash
 
-cd /opt/apps/exim
+# cd /opt/apps/exim
 mkdir -p ./log
 
 chmod -R 755 ./log
