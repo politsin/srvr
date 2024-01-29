@@ -9,6 +9,15 @@
 - rabbitmq init.sh
 - Docker: /etc/docker/daemon.json
 
+## PhpCS kill
+
+```
+0 0 * * * /usr/bin/docker start certbot -a > /opt/apps/certbot/log/cron.log
+0 20 * * * /usr/bin/docker exec -i docker-proxy /usr/sbin/nginx -s reload > /opt/docker-proxy/reload-log.log
+* * * * * ps -aux | grep phpcs | awk '{print $2}' | xargs kill
+30 12,18 * * * ps -aux | grep vscode | awk '{print $2}' | xargs kill
+```
+
 ## Dokcer-images
 
 - Source:
@@ -52,8 +61,49 @@ fs.inotify.max_user_watches = 65536
 ```
 
 - `sysctl fs.inotify`
-  - `fs.inotify.max_user_instances = 128`
+- `fs.inotify.max_user_instances = 128`
 - `sysctl -w fs.inotify.max_user_instances=256`
 - `sysctl -w fs.inotify.max_user_watches=256`
   sysctl -w fs.inotify.max_user_watches=6553699
   sysctl -w fs.inotify.max_user_instances=1024
+
+### Exim Update
+
+SET `4` APP
+
+```sh
+cd /opt/srvr
+git pull
+cat .env.local
+docker stop exim
+docker rm exim
+mv /opt/apps/exim /opt/apps/exim-old
+./console.php setapp
+cd /opt/apps/exim
+mv compose.yml docker-compose.yml
+./start.sh
+docker ps | grep exim
+```
+
+PHP-test
+
+```php
+<?php
+print "hello";
+$to = "politsin@gmail.com";
+$subject = "server test";
+$message = "test psss";
+$additional_headers = [];
+$additional_params = "";
+$mail = mail($to, $subject, $message);
+print ">$mail<";
+```
+
+## Docker-REST Update
+1. меняем nginx.conf
+2. выполняем команды
+```sh
+cd /opt/docker-rest
+docker pull nginx:alpine
+./start.sh
+```

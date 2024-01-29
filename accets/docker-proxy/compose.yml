@@ -4,7 +4,7 @@ services:
     image: nginx:alpine
     container_name: docker-proxy
     hostname: docker-proxy
-    restart: unless-stopped
+    restart: always
     logging:
       options:
         max-file: "3"
