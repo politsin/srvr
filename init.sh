@@ -5,7 +5,7 @@ apt install php-cli \
             php-dev \
             php-zip \
             php-pear \
-            -y
+            -y --no-install-recommends
 #Composer:::
 wget https://getcomposer.org/installer -q -O composer-setup.php && \
     php composer-setup.php --install-dir=/usr/local/bin --filename=composer && \

@@ -2,8 +2,6 @@
 
 namespace Srvr\Step;
 
-use Symfony\Component\Console\Style\SymfonyStyle;
-
 /**
  * Docker Proxy.
  */
@@ -12,7 +10,7 @@ class Step6DockerProxy extends Step0Base {
   /**
    * Run!
    */
-  public function run(string $value, SymfonyStyle $io) : bool {
+  public function run() : bool {
     $this->exec([
       'cp',
       '-r',

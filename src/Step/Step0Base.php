@@ -2,6 +2,7 @@
 
 namespace Srvr\Step;
 
+use Symfony\Component\Console\Style\SymfonyStyle;
 use Symfony\Component\Process\Exception\ProcessFailedException;
 use Symfony\Component\Process\Process;
 
@@ -10,10 +11,24 @@ use Symfony\Component\Process\Process;
  */
 abstract class Step0Base {
 
+  //phpcs:disable
+  protected string $value;
+  protected SymfonyStyle $io;
+  //phpcs:enable
+
   /**
    * Constructor.
    */
-  public function __construct() {
+  public function __construct(string $value, SymfonyStyle $io) {
+    $this->io = $io;
+    $this->value = $value;
+  }
+
+  /**
+   * Info.
+   */
+  protected function info() : void {
+
   }
 
   /**
@@ -24,6 +39,10 @@ abstract class Step0Base {
       'DEBIAN_FRONTEND' => 'noninteractive',
     ]);
     $process->setTimeout($timeout);
+    if (TRUE) {
+      // dump(implode(" ", $cmd));.
+      // return "";.
+    }
     $process->run();
     if (!$process->isSuccessful()) {
       throw new ProcessFailedException($process);

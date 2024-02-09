@@ -2,8 +2,6 @@
 
 namespace Srvr\Step;
 
-use Symfony\Component\Console\Style\SymfonyStyle;
-
 /**
  * Step1 Clear.
  */
@@ -12,7 +10,7 @@ class Step4Swap extends Step0Base {
   /**
    * Run!
    */
-  public function run(string $value, SymfonyStyle $io) : bool {
+  public function run() : bool {
     $this->exec(['fallocate', '-l', '4G', '/swapfile']);
     $this->exec(['chmod', '600', '/swapfile']);
     $this->exec(['mkswap', '/swapfile']);

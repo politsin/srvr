@@ -2,13 +2,11 @@
 
 namespace Srvr\Command;
 
+use Srvr\System\System;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Style\SymfonyStyle;
-use Symfony\Component\Process\Exception\ProcessFailedException;
-use Symfony\Component\Process\Process;
-use Symfony\Component\Yaml\Yaml;
 
 /**
  * Echo.
@@ -39,27 +37,16 @@ class Install extends Command {
     $this->output = $output;
     $this->io = new SymfonyStyle($input, $output);
     $this->io->title('Install');
-    $info = $this->currentSrvrInfo();
+    $system = new System($this->io);
+    $info = $system->getInfo();
     if (file_exists('/opt/docker-proxy')) {
       $this->io->block('Already installed', 'error');
+      dump($info);
       return 0;
     }
     $this->io->comment('Installing...');
-    // Switch CPU Arvhitecture.
-    switch ($info['arch']) {
-      case 'x86_64':
-        $this->installX64($info);
-        break;
-
-      case 'aarch64':
-        // Apt install lm-sensors i2c-tools.
-        $this->installArm($info);
-        break;
-
-      default:
-        $this->io->block("Not supported {$info['arch']}", 'error');
-        break;
-    }
+    $steps = $this->installSteps();
+    $system->install($steps);
     return 0;
   }
 
@@ -83,56 +70,6 @@ class Install extends Command {
   }
 
   /**
-   * Servers.
-   */
-  private function installX64(array $info) : void {
-    $this->io->block('x86_64', 'info');
-    // OS Description.
-    switch ($info['Distributor ID']) {
-      case 'Ubuntu':
-        $this->io->comment('Ubuntu 22.04 LTS');
-        foreach ($this->installSteps() as $key => $value) {
-          $step = "Srvr\Step\\" . $key;
-          (new $step())->run($value, $this->io);
-        }
-        break;
-
-      case 'Debian':
-        $this->io->comment('Debian 11 Bullseye');
-        foreach ($this->installSteps() as $key => $value) {
-          $step = "Srvr\Step\\" . $key;
-          (new $step())->run($value, $this->io);
-        }
-        break;
-
-      default:
-        $this->io->block("Not supported {$info['Distributor ID']}", 'error');
-        break;
-    }
-  }
-
-  /**
-   * Arm, Pi.
-   */
-  private function installArm(array $info) : void {
-    $this->io->block('Arm', 'info');
-    // OS Description.
-    switch ($info['Distributor ID']) {
-      case 'Ubuntu':
-        $this->io->comment('Ubuntu 22.04 LTS');
-        foreach ($this->installSteps() as $key => $value) {
-          $step = "Srvr\Step\\" . $key;
-          (new $step())->run($value, $this->io);
-        }
-        break;
-
-      default:
-        $this->io->block("Not supported {$info['Distributor ID']}", 'error');
-        break;
-    }
-  }
-
-  /**
    * Ask password.
    */
   private function ask() : NULL |string {
@@ -144,27 +81,6 @@ class Install extends Command {
       return $password;
     });
     return $password;
-  }
-
-  /**
-   * Current data.
-   */
-  private function currentSrvrInfo() : array {
-    $data = Yaml::parse($this->exec(['lsb_release', '-a']));
-    $data['arch'] = trim($this->exec(['arch']));
-    return $data;
-  }
-
-  /**
-   * Current data.
-   */
-  private function exec(array $cmd) : string {
-    $process = new Process($cmd);
-    $process->run();
-    if (!$process->isSuccessful()) {
-      throw new ProcessFailedException($process);
-    }
-    return $process->getOutput();
   }
 
 }

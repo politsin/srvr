@@ -2,8 +2,6 @@
 
 namespace Srvr\Step;
 
-use Symfony\Component\Console\Style\SymfonyStyle;
-
 /**
  * Step1 Clear.
  */
@@ -12,7 +10,7 @@ class Step3Bash extends Step0Base {
   /**
    * Run!
    */
-  public function run(string $value, SymfonyStyle $io) : bool {
+  public function run() : bool {
     $this->exec(['rm', '-f', '/root/.bashrc']);
     $this->exec(['rm', '-f', '/root/.bash_profile']);
     $this->exec(['mkdir', '-p', '/root/.ssh']);

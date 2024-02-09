@@ -2,8 +2,6 @@
 
 namespace Srvr\Step;
 
-use Symfony\Component\Console\Style\SymfonyStyle;
-
 /**
  * Step1 Clear.
  */
@@ -12,11 +10,8 @@ class Step2Util extends Step0Base {
   /**
    * Run!
    */
-  public function run(string $value, SymfonyStyle $io) : bool {
-    $this->exec([
-      'apt',
-      'install',
-      '-y',
+  public function run() : bool {
+    $install = [
       'ca-certificates',
       'apache2-utils',
       'mc',
@@ -32,7 +27,8 @@ class Step2Util extends Step0Base {
       'net-tools',
       'inetutils-ping',
       'software-properties-common',
-    ]);
+    ];
+    $this->exec(['apt', 'install', '-y', ...$install, '--no-install-recommends']);
     return 1;
   }
 
