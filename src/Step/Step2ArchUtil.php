@@ -14,7 +14,7 @@ class Step2ArchUtil extends Step0Base {
    * Run!
    */
   public function run() : bool {
-    $info = $this->info();
+    $info = $this->value;
     switch ($info['archClass']) {
       case 'ArchX64':
         $sys = new ArchX64();
@@ -30,7 +30,6 @@ class Step2ArchUtil extends Step0Base {
         $commands = [];
         break;
     }
-    dump($commands);
     $this->exec($commands);
     return 1;
   }
