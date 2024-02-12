@@ -106,7 +106,7 @@ class System {
     $result = [];
     foreach ($steps as $key => $value) {
       $step = "Srvr\Step\\{$key}";
-      $result[$key] = (new $step($value, $this->io))->run();
+      $result[$key] = (new $step($value, $this->io))->setInfo($info)->run();
     }
     return $result;
   }

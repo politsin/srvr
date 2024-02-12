@@ -12,6 +12,7 @@ use Symfony\Component\Process\Process;
 abstract class Step0Base {
 
   //phpcs:disable
+  protected array $info;
   protected string $value;
   protected SymfonyStyle $io;
   //phpcs:enable
@@ -30,6 +31,13 @@ abstract class Step0Base {
    */
   protected function info() : void {
     $this->io->note($this->value);
+  }
+
+  /**
+   * Current data.
+   */
+  public function setInfo(array $info) : void {
+    $this->info = $info;
   }
 
   /**
