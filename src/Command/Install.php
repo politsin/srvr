@@ -39,13 +39,15 @@ class Install extends Command {
     $this->io->title('Install');
     $system = new System($this->io);
     $info = $system->getInfo();
+    $steps = $this->installSteps();
     if (file_exists('/opt/docker-proxy')) {
       $this->io->block('Already installed', 'error');
       dump($info);
       return 0;
     }
+    // Install.
+    dump($steps);
     $this->io->comment('Installing...');
-    $steps = $this->installSteps();
     $system->install($steps);
     return 0;
   }
@@ -70,6 +72,14 @@ class Install extends Command {
       'Step8dTimeZone' => "Set TimeZone to Moscow",
       'Step9LogRotate' => "LogRotate",
     ];
+    $user = $this->io->choice('Select steps, example: 4,7,8', array_values($steps), NULL, TRUE);
+    if (!empty($user)) {
+      foreach ($steps as $key => $value) {
+        if (!in_array($value, $user)) {
+          unset($steps[$key]);
+        }
+      }
+    }
     return $steps;
   }
 
