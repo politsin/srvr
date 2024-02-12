@@ -42,7 +42,7 @@ abstract class Step0Base {
     $process->setTimeout($timeout);
     if (TRUE) {
       // dump(implode(" ", $cmd));.
-      return "";
+      // return "";.
     }
     $process->run();
     if (!$process->isSuccessful()) {
