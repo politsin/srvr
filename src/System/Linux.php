@@ -8,7 +8,7 @@ namespace Srvr\System;
 abstract class Linux {
 
   //phpcs:disable
-  protected string $sys = 'linux';
+  public string $sys = 'linux';
   //phpcs:enable
 
 }

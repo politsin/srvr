@@ -8,8 +8,8 @@ namespace Srvr\System;
 class Debian11 extends Debian {
 
   //phpcs:disable
-  protected string $version = '11';
-  protected string $name = 'bullseye';
+  public string $version = '11';
+  public string $name = 'bullseye';
   //phpcs:enable
 
 }

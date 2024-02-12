@@ -8,8 +8,8 @@ namespace Srvr\System;
 class Ubuntu22Lts extends Ubuntu {
 
   //phpcs:disable
-  protected string $version = '22.04';
-  protected string $name = 'Jammy Jellyfish';
+  public string $version = '22.04';
+  public string $name = 'Jammy Jellyfish';
   //phpcs:enable
 
 }

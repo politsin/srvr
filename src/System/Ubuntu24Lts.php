@@ -8,8 +8,8 @@ namespace Srvr\System;
 class Ubuntu24Lts extends Ubuntu {
 
   //phpcs:disable
-  protected string $version = '24.04';
-  protected string $name = 'Noble Numbat';
+  public string $version = '24.04';
+  public string $name = 'Noble Numbat';
   //phpcs:enable
 
 }

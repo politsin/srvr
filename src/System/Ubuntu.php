@@ -8,7 +8,7 @@ namespace Srvr\System;
 abstract class Ubuntu extends Linux {
 
   //phpcs:disable
-  protected string $os = 'Ubuntu';
+  public string $os = 'Ubuntu';
   //phpcs:enable
 
 }

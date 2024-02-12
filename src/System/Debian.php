@@ -8,7 +8,7 @@ namespace Srvr\System;
 abstract class Debian extends Linux {
 
   //phpcs:disable
-  protected string $os = 'Debian';
+  public string $os = 'Debian';
   //phpcs:enable
 
 }

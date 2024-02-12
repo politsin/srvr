@@ -8,8 +8,8 @@ namespace Srvr\System;
 class Debian12 extends Debian {
 
   //phpcs:disable
-  protected string $version = '12';
-  protected string $name = 'bookworm';
+  public string $version = '12';
+  public string $name = 'bookworm';
   //phpcs:enable
 
 }
