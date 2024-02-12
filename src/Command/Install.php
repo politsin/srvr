@@ -58,13 +58,17 @@ class Install extends Command {
       'Step1Clear' => "Clear apache, exim, etc",
       'Step2Update' => "Update system",
       'Step2Util' => "Util",
-      // 'Step3TimeZone' => "Set TimeZone",
+      'Step2ArchUtil' => "Util: architecture-dependent utilities",
       'Step3Bash' => "Set Bash",
       'Step3VsCode' => "Set file monitor",
       'Step4Swap' => "Set Swap",
       'Step5Docker' => "Install Docker",
       'Step6DockerProxy' => "Docker Proxy",
       'Step7DockerRest' => "Docker Rest",
+      'Step8CronKill' => "Cron kill phpcs, phpcbf, vscode",
+      'Step8FsMaxWatches' => "Cron kill phpcs, phpcbf, vscode",
+      'Step8dTimeZone' => "Set TimeZone to Moscow",
+      'Step9LogRotate' => "LogRotate",
     ];
     return $steps;
   }

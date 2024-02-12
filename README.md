@@ -9,13 +9,21 @@
 - rabbitmq init.sh
 - Docker: /etc/docker/daemon.json
 
-## PhpCS kill
+# Cron
 
 ```
-0 0 * * * /usr/bin/docker start certbot -a > /opt/apps/certbot/log/cron.log
-0 20 * * * /usr/bin/docker exec -i docker-proxy /usr/sbin/nginx -s reload > /opt/docker-proxy/reload-log.log
+# Edit this file to introduce tasks to be run by cron.
+
+# Dev: phpcs phpcbf vscode
 * * * * * ps -aux | grep phpcs | awk '{print $2}' | xargs kill
-30 12,18 * * * ps -aux | grep vscode | awk '{print $2}' | xargs kill
+* * * * * ps -aux | grep phpcbf | awk '{print $2}' | xargs kill
+30 7,12,18 * * * ps -aux | grep vscode | awk '{print $2}' | xargs kill
+
+# Apps
+0 10 * * * /usr/bin/docker start certbot -a > /opt/apps/certbot/log/cron.log
+30 9 * * * /usr/bin/docker exec -i docker-proxy /usr/sbin/nginx -s reload > /opt/docker-proxy/reload-log.log
+
+# Custom
 ```
 
 ## Dokcer-images
@@ -100,8 +108,10 @@ print ">$mail<";
 ```
 
 ## Docker-REST Update
+
 1. меняем nginx.conf
 2. выполняем команды
+
 ```sh
 cd /opt/docker-rest
 docker pull nginx:alpine

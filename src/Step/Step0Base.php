@@ -22,13 +22,14 @@ abstract class Step0Base {
   public function __construct(string $value, SymfonyStyle $io) {
     $this->io = $io;
     $this->value = $value;
+    $this->info();
   }
 
   /**
    * Info.
    */
   protected function info() : void {
-
+    $this->io->note($this->value);
   }
 
   /**
@@ -41,7 +42,7 @@ abstract class Step0Base {
     $process->setTimeout($timeout);
     if (TRUE) {
       // dump(implode(" ", $cmd));.
-      // return "";.
+      return "";
     }
     $process->run();
     if (!$process->isSuccessful()) {
