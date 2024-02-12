@@ -68,7 +68,7 @@ class Install extends Command {
       'Step6DockerProxy' => "Docker Proxy",
       'Step7DockerRest' => "Docker Rest",
       'Step8CronKill' => "Cron kill phpcs, phpcbf, vscode",
-      'Step8FsMaxWatches' => "Cron kill phpcs, phpcbf, vscode",
+      'Step8FsMaxWatches' => "Set file monitor FsMaxWatches",
       'Step8dTimeZone' => "Set TimeZone to Moscow",
       'Step9LogRotate' => "LogRotate",
     ];
