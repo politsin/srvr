@@ -12,7 +12,7 @@ class Step2Update extends Step0Base {
    */
   public function run() : bool {
     $this->exec(['apt', 'update']);
-    $this->exec(['apt', 'upgrade', '-y']);
+    $this->exec(['apt', 'upgrade', '-yf']);
     $this->exec(['apt', 'autoremove', '-y']);
     return 1;
   }
