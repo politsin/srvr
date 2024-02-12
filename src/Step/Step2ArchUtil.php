@@ -30,8 +30,10 @@ class Step2ArchUtil extends Step0Base {
         $commands = [];
         break;
     }
-    $this->exec($commands);
-    return 1;
+    foreach ($commands as $command) {
+      $this->exec($commands);
+    }
+    return 0;
   }
 
 }
