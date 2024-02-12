@@ -36,9 +36,8 @@ abstract class Step0Base {
   /**
    * Current data.
    */
-  public function setInfo(array $info) : self {
+  public function setInfo(array $info) : void {
     $this->info = $info;
-    return $this;
   }
 
   /**
