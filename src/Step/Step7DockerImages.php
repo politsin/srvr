@@ -17,6 +17,7 @@ class Step7DockerImages extends Step0Base {
       'mariadb:10.5',
     ];
     foreach ($images as $image) {
+      $this->io->writeln("pull: $image");
       $this->exec(['docker', 'pull', $image]);
     }
     return 1;
