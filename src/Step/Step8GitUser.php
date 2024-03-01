@@ -14,7 +14,7 @@ class Step8GitUser extends Step0Base {
     $this->exec(['git', 'config', '--global', 'user.name', 'Anatoly' . 'Politsin']);
     $this->exec(['git', 'config', '--global', 'user.email', 'politsin@gmail.com']);
     $this->exec(['git', 'config', '--global', 'push.default', 'simple']);
-    $result = $this->exec(['cat', '~/.gitconfig']);
+    $result = $this->exec(['/usr/bin/cat', '~/.gitconfig']);
     dump($result);
     return 1;
   }
