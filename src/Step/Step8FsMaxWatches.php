@@ -24,7 +24,7 @@ class Step8FsMaxWatches extends Step0Base {
     $current = $this->exec(['sysctl', 'fs.inotify']);
     dump($current);
     foreach ($ok as $key => $value) {
-      $this->exec(['sysctl', '-w', "fs.inotify.$key", $value]);
+      $this->exec(['sysctl', '-w', "fs.inotify.$key=$value"]);
     }
     $current = $this->exec(['sysctl', 'fs.inotify']);
     dump($current);
