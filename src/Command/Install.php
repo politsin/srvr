@@ -67,6 +67,7 @@ class Install extends Command {
       'Step5Docker' => "Install Docker",
       'Step6DockerProxy' => "Docker Proxy",
       'Step7DockerRest' => "Docker Rest",
+      'Step7DockerImages' => "Docker Images php, mysql, dockup",
       'Step8CronKill' => "Cron kill phpcs, phpcbf, vscode",
       'Step8FsMaxWatches' => "Set file monitor FsMaxWatches",
       'Step8dTimeZone' => "Set TimeZone to Moscow",
