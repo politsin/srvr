@@ -64,26 +64,4 @@ alias ll='ls -l'
 alias la='ls -A'
 alias l='ls -CF'
 
-
-# enable programmable completion features (you don't need to enable
-# this, if it's already enabled in /etc/bash.bashrc and /etc/profile
-# sources /etc/bash.bashrc).
-#if [ -f /etc/bash_completion ]; then
-#    . /etc/bash_completion
-#fi
-
-# Include Drush bash customizations.
-
-if [ -f "/var/www/.drush/drush.bashrc" ] ; then
-  source /var/www/.drush/drush.bashrc
-fi
-
-# Include Drush completion.
-if [ -f "/var/www/.drush/drush.complete.sh" ] ; then
-  source /var/www/.drush/drush.complete.sh
-fi
-
-# Include Drush prompt customizations.
-if [ -f "/var/www/.drush/drush.prompt.sh" ] ; then
-  source /var/www/.drush/drush.prompt.sh
-fi
+export PATH="$PATH:${HOME}html/vendor/bin"

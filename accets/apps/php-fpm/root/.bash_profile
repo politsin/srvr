@@ -1,7 +1,3 @@
-# Include Drush bash customizations.
-if [ -f "/var/www/.drush/drush.bashrc" ] ; then
-  source /var/www/.drush/drush.bashrc
-fi
 
 #-------
 # Цвета
@@ -77,10 +73,9 @@ umask 022
 # eval "`dircolors`" # цветные файлы в ls
 
 #-------------------------
-# Псевдонимы
+# Extract
 #-------------------------
 alias e="extract"
-alias drush="/usr/local/bin/drush"
 
 export LS_OPTIONS='--color=always --human'
 alias l='ls $LS_OPTIONS -hF'
@@ -124,6 +119,4 @@ function extract() {
     echo "'$1' is not a valid file"
   fi
 }
-# Запуск бинарников установленных композером (phpcs, phpcbf)
-export PATH="$HOME/html/vendor/bin:$PATH"
-
+# export PATH="${HOME}html/vendor/bin:$PATH"
