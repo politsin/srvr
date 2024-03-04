@@ -21,6 +21,7 @@ class Step2Util extends Step0Base {
       'htop',
       'curl',
       'ncdu',
+      'sudo',
       'unzip',
       'python3',
       'dnsutils',
