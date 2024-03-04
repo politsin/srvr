@@ -1,3 +1,1 @@
 # PHP-fpm
-
-- /opt/sites
