@@ -65,7 +65,6 @@
     "markdown": true
   },
   "codeium.enableCodeLens": false,
-  "intelephense.licenceKey": "00EHGVL5TQGS1S0",
   "intelephense.environment.documentRoot": "/var/www/html",
   "intelephense.stubs": [
     "apache",
