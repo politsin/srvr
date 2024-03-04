@@ -15,6 +15,12 @@ class AppPhpFpm extends AppBase {
    */
   public function run() : bool {
     $this->cp($this->name);
+    $this->exec([
+      'chown',
+      '-R',
+      'www-data:www-data',
+      '/opt/apps/php-fpm/www-home',
+    ]);
     return 1;
   }
 
