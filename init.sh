@@ -4,6 +4,7 @@ apt update -y
 apt install php-cli \
             php-dev \
             php-zip \
+            php-curl \
             php-pear \
             -y --no-install-recommends
 #Composer:::
