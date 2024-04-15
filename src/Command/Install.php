@@ -66,13 +66,13 @@ class Install extends Command {
       'Step4Swap' => "Set Swap",
       'Step5Docker' => "Install Docker",
       'Step6DockerProxy' => "Docker Proxy",
+      'Step6LogRotate' => "LogRotate",
       'Step7DockerRest' => "Docker Rest",
       'Step7DockerImages' => "Docker Images php, mysql, dockup",
       'Step8CronKill' => "Cron kill phpcs, phpcbf, vscode",
       'Step8FsMaxWatches' => "Set file monitor FsMaxWatches",
       'Step8dTimeZone' => "Set TimeZone to Moscow",
       'Step8GitUser' => "Set git user",
-      'Step9LogRotate' => "LogRotate",
     ];
     $user = $this->io->choice('Select steps, example: 4,7,8', array_values($steps), NULL, TRUE);
     if (!empty($user)) {

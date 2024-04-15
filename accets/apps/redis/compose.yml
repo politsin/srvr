@@ -10,7 +10,17 @@ services:
         max-file: "3"
         max-size: 50m
     ports:
-      - 6379:6379
+      - "6379:6379"
     volumes:
       - ./data:/data
-    command: redis-server --appendonly yes --protected-mode no --save 60 1 --requirepass "${PASSWORD}"
+    command:
+      - redis-server
+      - --appendonly yes
+      - --protected-mode no
+      - --save 60 1
+      - --requirepass "${PASSWORD}"
+      - --maxmemory 300000000
+    deploy:
+      resources:
+        limits:
+          memory: 300M
