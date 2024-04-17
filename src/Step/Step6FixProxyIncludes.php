@@ -14,7 +14,7 @@ class Step6FixProxyIncludes extends Step0Base {
     $this->exec([
       'mv',
       '/opt/docker-proxy/includes',
-      "/opt/old/nginx-includes-{$this->tkey}",
+      "/opt/sites/0-old/nginx-includes-{$this->tkey}",
     ]);
     $this->exec([
       'cp',
