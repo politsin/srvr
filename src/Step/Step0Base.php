@@ -13,6 +13,7 @@ abstract class Step0Base {
 
   //phpcs:disable
   protected array $info;
+  protected string $tkey;
   protected string $value;
   protected SymfonyStyle $io;
   //phpcs:enable
@@ -23,6 +24,7 @@ abstract class Step0Base {
   public function __construct(string $value, SymfonyStyle $io) {
     $this->io = $io;
     $this->value = $value;
+    $this->tkey = date('Y-m-dTH-i-s');
     $this->info();
   }
 
