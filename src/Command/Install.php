@@ -42,11 +42,9 @@ class Install extends Command {
     $steps = $this->installSteps();
     if (file_exists('/opt/docker-proxy')) {
       $this->io->block('Already installed', 'error');
-      dump($info);
       // Return 0;.
     }
     // Install.
-    dump($steps);
     $this->io->comment('Installing...');
     $system->install($steps);
     return 0;

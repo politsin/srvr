@@ -102,7 +102,6 @@ class System {
    */
   public function install(array $steps) : array {
     $info = $this->info;
-    dump($info);
     $result = [];
     foreach ($steps as $key => $value) {
       $step = "Srvr\Step\\{$key}";
