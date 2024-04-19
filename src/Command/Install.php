@@ -48,7 +48,7 @@ class Install extends Command {
     // Install.
     dump($steps);
     $this->io->comment('Installing...');
-    // $system->install($steps);
+    $system->install($steps);
     return 0;
   }
 
