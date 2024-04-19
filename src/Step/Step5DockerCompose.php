@@ -5,7 +5,7 @@ namespace Srvr\Step;
 /**
  * Step1 Clear.
  */
-class Step5Docker extends Step0Base {
+class Step5DockerCompose extends Step0Base {
 
   /**
    * Run!
@@ -16,10 +16,11 @@ class Step5Docker extends Step0Base {
     $this->io->warning("TODO: arch: $arch");
     $compose = "https://github.com/docker/compose/releases/download/{$version}/docker-compose-linux-$arch";
     $this->execCommands([
-      'apt install -y docker.io docker-compose',
       "curl -SL $compose -o /usr/local/lib/docker/cli-plugins/docker-compose",
       "chmod +x /usr/local/lib/docker/cli-plugins/docker-compose",
     ]);
+    $result = $this->exec("docker compose version");
+    dump($result);
     return 1;
   }
 

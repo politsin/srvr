@@ -77,6 +77,7 @@ class Install extends Command {
       '=' => $installText,
       'Step9TimeZone' => "Set TimeZone to Moscow",
       'Step9FixProxyIncludes' => "Fix Proxy Includes",
+      'Step5DockerCompose' => "Fix DockerCompose",
     ];
     $choises = [
       '=' => $installText,
