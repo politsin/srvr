@@ -13,7 +13,6 @@ class Step5DockerCompose extends Step0Base {
   public function run() : bool {
     $version = "v2.26.1";
     $arch = $this->info['arch'];
-    $this->io->warning("TODO: arch: $arch");
     $compose = "https://github.com/docker/compose/releases/download/{$version}/docker-compose-linux-$arch";
     $dir = "/usr/local/lib/docker/cli-plugins";
     $this->execCommands([
@@ -23,7 +22,7 @@ class Step5DockerCompose extends Step0Base {
       "chmod +x $dir/docker-compose",
     ]);
     $result = $this->exec("docker compose version");
-    dump($result);
+    $this->io->success($result);
     return 1;
   }
 
