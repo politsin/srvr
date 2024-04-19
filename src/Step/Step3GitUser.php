@@ -11,8 +11,8 @@ class Step3GitUser extends Step0Base {
    * Run!
    */
   public function run() : bool {
-    $gituser = $_ENV['GIT_USER'] ?? 'Anatoly Politsin';
-    $gitmail = $_ENV['GIT_MAIL'] ?? 'politsin@gmail.com';
+    $gituser = $_ENV['GIT_USER'] ?: 'Anatoly Politsin';
+    $gitmail = $_ENV['GIT_MAIL'] ?: 'politsin@gmail.com';
     $cmd = [
       "git config --global user.name '$gituser'",
       "git config --global user.email $gitmail",
