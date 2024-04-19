@@ -65,6 +65,7 @@ class Install extends Command {
       'Step3Bash' => "Set Bash",
       'Step3FsMaxWatches' => "Set file monitor FsMaxWatches for VsCode",
       'Step3GitUser' => "Set git user",
+      'Step4Swap' => "Swap 4G",
       'Step5Docker' => "Install Docker",
       'Step6DockerProxy' => "Docker Proxy",
       'Step6LogRotate' => "LogRotate",
