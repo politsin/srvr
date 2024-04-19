@@ -11,6 +11,10 @@ class Step8CronKill extends Step0Base {
    * Run!
    */
   public function run() : bool {
+    $crontabs = [
+      'debian' => '/var/spool/cron/crontabs/root',
+    ];
+    $tab = $crontabs['debian'];
     $cron = [
       "# Dev: phpcs phpcbf vscode",
       "* * * * * ps -aux | grep phpcs | awk '{print $2}' | xargs kill",
@@ -19,9 +23,12 @@ class Step8CronKill extends Step0Base {
       // '*/10 * * * *  echo "" > $(docker inspect --format='{{. LogPath}}' docker-proxy)',
       // '*/30 * * * *  echo "" > /opt/sites/XX-grxxxin/www-home/log/nginx-access.log',
     ];
-    $this->io->warning("@todo set cron");
-    $this->io->error(implode("\n", $cron));
-    // $this->exec(['crontab', '-r']);
+    foreach ($cron as $cmd) {
+      $this->exec("echo $cmd >> $tab");
+    }
+    $this->exec("service cron reload");
+    $result = $this->exec("crontab -l");
+    dump($result);
     return 1;
   }
 

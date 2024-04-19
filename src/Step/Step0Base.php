@@ -44,12 +44,30 @@ abstract class Step0Base {
   }
 
   /**
-   * Current data.
+   * Shell exec commnads.
    */
-  public function exec(array $cmd, float $timeout = 999999) : string {
-    $process = new Process($cmd, NULL, [
-      'DEBIAN_FRONTEND' => 'noninteractive',
-    ]);
+  public function execCommands($commnds) : string {
+    $result = "";
+    foreach ($commnds as $cmd) {
+      $result .= $this->exec($cmd) . "\n";
+    }
+    return $result;
+  }
+
+  /**
+   * Shell exec with symfony process.
+   */
+  public function exec(string|array $cmd, float $timeout = 999999) : string {
+    if (is_array($cmd)) {
+      $process = new Process($cmd, NULL, [
+        'DEBIAN_FRONTEND' => 'noninteractive',
+      ]);
+    }
+    else {
+      $process = Process::fromShellCommandline($cmd, NULL, [
+        'DEBIAN_FRONTEND' => 'noninteractive',
+      ]);
+    }
     $process->setTimeout($timeout);
     if (TRUE) {
       // dump(implode(" ", $cmd));.

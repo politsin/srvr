@@ -48,7 +48,7 @@ class Install extends Command {
     // Install.
     dump($steps);
     $this->io->comment('Installing...');
-    $system->install($steps);
+    // $system->install($steps);
     return 0;
   }
 
@@ -56,34 +56,46 @@ class Install extends Command {
    * Servers.
    */
   private function installSteps() : array {
-    $steps = [
+    $installText = "Install all";
+    $install = [
       'Step1Clear' => "Clear apache, exim, etc",
       'Step2Update' => "Update system",
       'Step2Util' => "Util",
       'Step2ArchUtil' => "Util: architecture-dependent utilities",
       'Step3Bash' => "Set Bash",
-      'Step3VsCode' => "Set file monitor",
-      'Step4Swap' => "Set Swap",
+      'Step3FsMaxWatches' => "Set file monitor FsMaxWatches for VsCode",
+      'Step3GitUser' => "Set git user",
       'Step5Docker' => "Install Docker",
       'Step6DockerProxy' => "Docker Proxy",
       'Step6LogRotate' => "LogRotate",
-      'Step6FixProxyIncludes' => "Fix Proxy Includes",
       'Step7DockerRest' => "Docker Rest",
       'Step7DockerImages' => "Docker Images php, mysql, dockup",
       'Step8CronKill' => "Cron kill phpcs, phpcbf, vscode",
-      'Step8FsMaxWatches' => "Set file monitor FsMaxWatches",
-      'Step8dTimeZone' => "Set TimeZone to Moscow",
-      'Step8GitUser' => "Set git user",
     ];
-    $user = $this->io->choice('Select steps, example: 4,7,8', array_values($steps), NULL, TRUE);
-    if (!empty($user)) {
-      foreach ($steps as $key => $value) {
+    $help = [
+      '=' => $installText,
+      'Step9TimeZone' => "Set TimeZone to Moscow",
+      'Step9FixProxyIncludes' => "Fix Proxy Includes",
+    ];
+    $choises = [
+      '=' => $installText,
+      ...$install,
+      ...$help,
+    ];
+    ksort($choises);
+    $user = $this->io->choice('Select steps, example: 4,7,8', array_values($choises), NULL, TRUE);
+    if (in_array($installText, $user)) {
+      $this->io->warning('Full install selected');
+      return $install;
+    }
+    elseif (!empty($user)) {
+      foreach ($choises as $key => $value) {
         if (!in_array($value, $user)) {
-          unset($steps[$key]);
+          unset($choises[$key]);
         }
       }
     }
-    return $steps;
+    return $choises;
   }
 
   /**

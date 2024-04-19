@@ -117,3 +117,23 @@ cd /opt/docker-rest
 docker pull nginx:alpine
 ./start.sh
 ```
+
+## Debian update
+
+debian.org - последняя версия 12 - `bookworm`
+
+```sh
+lsb_release -a
+apt update
+apt upgrade -y
+# Keep the local version currently installed
+nano /etc/apt/sources.list
+cat /etc/apt/sources.list
+apt update
+apt upgrade --without-new-pkgs -y
+# Restart services without asking
+apt full-upgrade -y
+apt --purge autoremove -y
+lsb_release -a
+cat /etc/debian_version
+```

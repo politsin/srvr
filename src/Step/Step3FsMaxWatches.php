@@ -3,9 +3,9 @@
 namespace Srvr\Step;
 
 /**
- * Step3 VsCode.
+ * Step8 Clear.
  */
-class Step3VsCode extends Step0Base {
+class Step3FsMaxWatches extends Step0Base {
 
   /**
    * Run!
@@ -21,12 +21,12 @@ class Step3VsCode extends Step0Base {
       'max_user_instances' => 1024,
       'max_user_watches' => 6553699,
     ];
-    $current = $this->exec(['sysctl', 'fs.inotify']);
+    $current = $this->exec('sysctl fs.inotify');
     dump($current);
     foreach ($ok as $key => $value) {
-      $this->exec(['sysctl', '-w', "fs.inotify.$key=$value"]);
+      $this->exec("sysctl -w fs.inotify.$key=$value");
     }
-    $current = $this->exec(['sysctl', 'fs.inotify']);
+    $current = $this->exec('sysctl fs.inotify');
     dump($current);
     return 1;
   }

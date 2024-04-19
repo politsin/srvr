@@ -11,11 +11,20 @@ class Step4Swap extends Step0Base {
    * Run!
    */
   public function run() : bool {
-    $this->exec(['fallocate', '-l', '4G', '/swapfile']);
-    $this->exec(['chmod', '600', '/swapfile']);
-    $this->exec(['mkswap', '/swapfile']);
-    $this->exec(['swapon', '/swapfile']);
-    $this->exec(['echo', '/swapfile none swap sw 0 0', '>>', '/etc/fstab']);
+    $cmd = [
+      'swapon --show=SIZE',
+      'free --giga -h -t',
+    ];
+    $swapon = [
+      'fallocate -l 4G /swapfile',
+      'chmod 600 /swapfile',
+      'mkswap /swapfile',
+      'swapon /swapfile',
+      'echo "/swapfile none swap sw 0 0" >> /etc/fstab',
+    ];
+    $this->execCommands($swapon);
+    $result = $this->execCommands($cmd);
+    dump($result);
     return 1;
   }
 
