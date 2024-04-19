@@ -107,7 +107,8 @@ class Install extends Command {
     if ($user) {
       shell_exec("echo 'USER=$user' >> /opt/srvr/.env.local");
     }
-    $host = $this->io->ask("HOST=", $_ENV['HOST'] ?? shell_exec('hostname -f'));
+    $local = trim(shell_exec('hostname -f'));
+    $host = $this->io->ask("HOST=", $_ENV['HOST'] ?? $local);
     if ($host) {
       shell_exec("echo 'HOST=$host' >> /opt/srvr/.env.local");
     }
