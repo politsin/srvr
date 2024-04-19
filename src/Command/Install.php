@@ -38,7 +38,8 @@ class Install extends Command {
     $this->io = new SymfonyStyle($input, $output);
     $this->io->title('Install');
     $system = new System($this->io);
-    $info = $system->getInfo();
+    $system->getInfo();
+    $this->askLocalEnv();
     $steps = $this->installSteps();
     if (file_exists('/opt/docker-proxy')) {
       $this->io->block('Already installed', 'error');
@@ -99,17 +100,17 @@ class Install extends Command {
   }
 
   /**
-   * Ask password.
+   * Ask local env.
    */
-  private function ask() : NULL |string {
-    $password = NULL;
-    $this->io->askHidden('What is your password?', function (string $password): string {
-      if (empty($password)) {
-        throw new \RuntimeException('Password cannot be empty.');
-      }
-      return $password;
-    });
-    return $password;
+  private function askLocalEnv() : void {
+    $user = $this->io->ask("USER=", $_ENV['USER'] ?? 'synapse');
+    if ($user) {
+      shell_exec("echo 'USER=$user' >> /opt/srvr/.env.local");
+    }
+    $host = $this->io->ask("HOST=", $_ENV['HOST'] ?? shell_exec('hostname -f'));
+    if ($host) {
+      shell_exec("echo 'HOST=$host' >> /opt/srvr/.env.local");
+    }
   }
 
 }
