@@ -20,7 +20,7 @@ class Step3GitUser extends Step0Base {
     ];
     $this->execCommands($cmd);
     $me = trim($this->exec(['whoami']));
-    $result = $this->exec([
+    $result = $this->execCommands([
       "/usr/bin/cat /$me/.gitconfig",
     ]);
     dump($result);
