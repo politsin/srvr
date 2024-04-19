@@ -19,7 +19,7 @@ class Step5Docker extends Step0Base {
     $this->execCommands([
       'apt install -y docker.io docker-compose',
       "mkdir -p $dir",
-      "rm -f $dir/docker-compose",
+      // "rm -f $dir/docker-compose",
       "curl -SL $compose -o $dir/docker-compose",
       "chmod +x $dir/docker-compose",
     ]);
