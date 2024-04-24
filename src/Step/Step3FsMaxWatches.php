@@ -25,6 +25,7 @@ class Step3FsMaxWatches extends Step0Base {
     dump($current);
     foreach ($ok as $key => $value) {
       $this->exec("sysctl -w fs.inotify.$key=$value");
+      $this->exec("echo fs.inotify.$key=$value >> /etc/sysctl.conf");
     }
     $current = $this->exec('sysctl fs.inotify');
     dump($current);
