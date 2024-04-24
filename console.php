@@ -8,6 +8,7 @@ use Srvr\Command\Fix;
 use Srvr\Command\Install;
 use Srvr\Command\SetApp;
 use Srvr\Command\SetCron;
+use Srvr\Command\TestEmail;
 use Symfony\Component\Console\Application;
 use Symfony\Component\Dotenv\Dotenv;
 
@@ -26,6 +27,7 @@ $app->add(new Check());
 $app->add(new SetApp());
 $app->add(new Install());
 $app->add(new SetCron());
+$app->add(new TestEmail());
 if ($_ENV['APP_TEMPLATE'] ?? FALSE) {
   $app->setDefaultCommand($_ENV['APP_TEMPLATE'], TRUE);
 }
