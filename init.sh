@@ -9,8 +9,8 @@ apt install ssmtp \
             php-pear \
             -y --no-install-recommends
 
-cp /etc/ssmtp/ssmtp.conf /etc/ssmtp/ssmtp.conf.bak
-cp /opt/srvr/etc/ssmtp/ssmtp.conf /etc/ssmtp/ssmtp.conf
+mv /etc/ssmtp/ssmtp.conf /etc/ssmtp/ssmtp.conf.bak
+cp /opt/srvr/accets/etc/ssmtp/ssmtp.conf /etc/ssmtp/ssmtp.conf
 
 #Composer:::
 wget https://getcomposer.org/installer -q -O composer-setup.php && \
