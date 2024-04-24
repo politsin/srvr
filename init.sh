@@ -1,7 +1,8 @@
 #!/bin/bash
 
 apt update -y
-apt install php-cli \
+apt install ssmtp \
+            php-cli \
             php-dev \
             php-zip \
             php-curl \
