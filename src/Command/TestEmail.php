@@ -48,7 +48,7 @@ class TestEmail extends Command {
    */
   private function mail(string $to) : bool {
     $subject = "Test mail from console";
-    $message = date("d M H:i") . "test mail";
+    $message = "test mail " . date("d M H:i");
     $headers = [
       'From' => 'do-not-reply@s1dev.ru',
       'X-Mailer' => 'PHP/' . phpversion(),
