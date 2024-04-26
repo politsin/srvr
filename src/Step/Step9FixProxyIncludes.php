@@ -3,9 +3,9 @@
 namespace Srvr\Step;
 
 /**
- * Step8 Clear.
+ * Step 9 Fix Proxy Includes.
  */
-class Step6FixProxyIncludes extends Step0Base {
+class Step9FixProxyIncludes extends Step0Base {
 
   /**
    * Run!
