@@ -12,9 +12,9 @@ class Step9FixVscodeSettings extends Step0Base {
    */
   public function run() : bool {
     $src = "{$_ENV['ACCETS']}/apps/php-fpm/www-home/.vscode/settings.json";
-    $settings = file_get_contents($src);
     $dst = "/opt/apps/php-fpm/www-home/.vscode/settings.json";
-    $this->exec("echo '$settings' > $dst");
+    $settings = file_get_contents($src);
+    file_put_contents($dst, $settings);
     return 1;
   }
 

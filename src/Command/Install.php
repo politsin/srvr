@@ -104,14 +104,18 @@ class Install extends Command {
    * Ask local env.
    */
   private function askLocalEnv() : void {
-    $user = $this->io->ask("USER=", $_ENV['USER'] ?? 'synapse');
-    if ($user) {
-      shell_exec("echo 'USER=$user' >> /opt/srvr/.env.local");
+    if (empty($_ENV['USER'])) {
+      $user = $this->io->ask("USER=", $_ENV['USER'] ?? 'synapse');
+      if ($user) {
+        shell_exec("echo 'USER=$user' >> /opt/srvr/.env.local");
+      }
     }
-    $local = trim(shell_exec('hostname -f'));
-    $host = $this->io->ask("HOST=", $_ENV['HOST'] ?? $local);
-    if ($host) {
-      shell_exec("echo 'HOST=$host' >> /opt/srvr/.env.local");
+    if (empty($_ENV['HOST'])) {
+      $local = trim(shell_exec('hostname -f'));
+      $host = $this->io->ask("HOST=", $_ENV['HOST'] ?? $local);
+      if ($host) {
+        shell_exec("echo 'HOST=$host' >> /opt/srvr/.env.local");
+      }
     }
   }
 
