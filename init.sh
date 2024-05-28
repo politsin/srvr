@@ -10,7 +10,7 @@ apt install ssmtp \
             -y --no-install-recommends
 
 mv /etc/ssmtp/ssmtp.conf /etc/ssmtp/ssmtp.conf.bak
-cp /opt/srvr/accets/etc/ssmtp/ssmtp.conf /etc/ssmtp/ssmtp.conf
+cp /opt/srvr/assets/etc/ssmtp/ssmtp.conf /etc/ssmtp/ssmtp.conf
 
 #Composer:::
 wget https://getcomposer.org/installer -q -O composer-setup.php && \
