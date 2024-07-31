@@ -17,6 +17,9 @@ class Step7DockerRest extends Step0Base {
         "/opt/docker-rest/start.sh",
       ]);
     }
+    else {
+      $this->io->warning("docker-rest already exists");
+    }
 
     return 1;
   }
