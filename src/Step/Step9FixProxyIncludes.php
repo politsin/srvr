@@ -19,7 +19,7 @@ class Step9FixProxyIncludes extends Step0Base {
     $this->exec([
       'cp',
       '-r',
-      "{$_ENV['ACCETS']}/docker-proxy/includes",
+      "{$_ENV['ASSETS']}/docker-proxy/includes",
       '/opt/docker-proxy/includes',
     ]);
     $this->exec(['docker', 'restart', 'docker-proxy']);
