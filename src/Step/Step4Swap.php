@@ -22,7 +22,9 @@ class Step4Swap extends Step0Base {
       'swapon /swapfile',
       'echo "/swapfile none swap sw 0 0" >> /etc/fstab',
     ];
-    $this->execCommands($swapon);
+    if (!file_exists('/swapfile')) {
+      $this->execCommands($swapon);
+    }
     $result = $this->execCommands($cmd);
     dump($result);
     return 1;
