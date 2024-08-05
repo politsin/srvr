@@ -62,7 +62,7 @@ abstract class AppBase {
   }
 
   /**
-   * Current data.
+   * Replace $env with $val: s/$env/{$val}/g.
    */
   public function sedFile(string $env, string $val, string $file) : string {
     $name = $this->name;

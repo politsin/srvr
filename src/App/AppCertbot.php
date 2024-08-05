@@ -23,16 +23,15 @@ class AppCertbot extends AppBase {
       $answer = str_replace("  ", " ", $answer);
       return explode(" ", $answer);
     });
-    $i = 0;
     $hosts = [];
     foreach ($domains as $host) {
-      if (strpos($host, ".") && $i++) {
-        $this->setHost("HOST{$i}=");
+      if (strpos($host, ".")) {
         $hosts[] = $host;
       }
     }
-    $this->sedFile('${HOSTS}', implode(",", $hosts), ".env");
-    $this->sedFile('${HOST}', $_ENV['HOST'], "recurrent.sh");
+    $this->sedFile('HOSTS=', "HOSTS=" . implode(",", $hosts), ".env");
+    $this->sedFile('HOST=', "HOST={$hosts[0]}", ".env");
+    $this->sedFile('${HOST}', $hosts[0], "recurrent.sh");
 
     return 1;
   }
