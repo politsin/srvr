@@ -30,7 +30,6 @@ class AppCertbot extends AppBase {
       }
     }
     $this->sedFile('HOSTS=', "HOSTS=" . implode(",", $hosts), ".env");
-    $this->sedFile('HOST=', "HOST={$hosts[0]}", ".env");
     $this->sedFile('${HOST}', $hosts[0], "recurrent.sh");
 
     return 1;
