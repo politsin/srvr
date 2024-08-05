@@ -27,7 +27,7 @@ class Step8CronKill extends Step0Base {
       // '*/30 * * * *  echo "" > /opt/sites/XX-grxxxin/www-home/log/nginx-access.log',
     ];
     foreach ($cron as $cmd) {
-      $this->exec("echo $cmd >> $tab");
+      $this->exec("echo '$cmd' >> $tab");
     }
     $this->exec("service cron reload");
     $result = $this->exec("crontab -l");
