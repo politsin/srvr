@@ -21,8 +21,7 @@ services:
       - --register-unsafely-without-email
       - --agree-tos
       - --no-eff-email
-      - --expand -d $HOSTS
-      # - $HOSTS1
-      # - $HOSTS2
-      # - $HOSTS3
-      # - $HOSTS4
+      - -d $HOST
+      # - -d $HOST2
+      # - -d $HOST3
+      # - -d $HOST4
