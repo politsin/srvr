@@ -14,6 +14,9 @@ class Step8CronKill extends Step0Base {
     $crontabs = [
       'debian' => '/var/spool/cron/crontabs/root',
     ];
+    if (!file_exists($crontabs['debian'])) {
+      $this->exec("touch {$crontabs['debian']}");
+    }
     $tab = $crontabs['debian'];
     $cron = [
       "# Dev: phpcs phpcbf vscode",
