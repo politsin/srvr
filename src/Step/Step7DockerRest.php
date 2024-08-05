@@ -20,7 +20,8 @@ class Step7DockerRest extends Step0Base {
     else {
       $this->io->warning("docker-rest already exists");
     }
-
+    $pass = '/opt/docker-rest/passwd';
+    $this->io->writeln("password: " . file_get_contents($pass));
     return 1;
   }
 
