@@ -1,7 +1,5 @@
 #!/bin/bash
 
-# cd /opt/docker-rest
-
 KEYS=/opt/docker-rest/ssl/rest.crt
 if [ -f "$KEYS" ]; then
     echo "$KEYS exists."
@@ -36,4 +34,5 @@ else
    service docker restart
 fi
 
+cd /opt/docker-rest
 docker-compose up -d
