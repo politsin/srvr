@@ -25,6 +25,7 @@ class Step2Util extends Step0Base {
       'unzip',
       'python3',
       'dnsutils',
+      'sendemail',
       'net-tools',
       'inetutils-ping',
       'software-properties-common',
