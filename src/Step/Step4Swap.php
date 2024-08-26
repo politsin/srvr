@@ -18,6 +18,7 @@ class Step4Swap extends Step0Base {
     $current = $this->currentMem();
     if ($current['swap'] < $current['mem']) {
       $swap = $current['mem'] - $current['swap'] = 2;
+      $swap = ($swap > 32) ? 32 : $swap;
       $this->io->warning("Swap ON {$swap}G");
       $swapon = [
         "fallocate -l {$swap}G /swapfile",
