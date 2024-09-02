@@ -1,7 +1,7 @@
 version: "3"
 services:
   wireguard:
-    image: weejewel/wg-easy
+    image: ghcr.io/wg-easy/wg-easy
     hostname: wireguard
     container_name: wireguard
     restart: always
@@ -16,11 +16,13 @@ services:
       - net.ipv4.ip_forward=1
       - net.ipv4.conf.all.src_valid_mark=1
     environment:
+      LANG: ru
+      PORT: 994
       WG_HOST: $HOST
       PASSWORD: $PASSWORD
     ports:
       # 139 & 445 = SMB PORTS
       - 993:51820/udp
-      - 994:51821
+      - 994:994/tcp
     volumes:
       - "./config:/etc/wireguard"
