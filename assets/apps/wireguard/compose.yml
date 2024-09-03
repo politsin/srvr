@@ -20,6 +20,7 @@ services:
       PORT: 994
       WG_HOST: $HOST
       PASSWORD: $PASSWORD
+      PASSWORD_HASH: $PASSWORD_HASH
     ports:
       # 139 & 445 = SMB PORTS
       - 993:51820/udp

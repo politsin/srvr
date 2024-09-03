@@ -2,8 +2,6 @@
 
 namespace Srvr\App;
 
-use Symfony\Component\Console\Style\SymfonyStyle;
-
 /**
  * Wireguard - vpn.
  */
@@ -18,7 +16,11 @@ class AppWireGuard extends AppBase {
   public function run() : bool {
     $this->cp($this->name);
     $this->setHost();
-    $this->setPass();
+    $pass = $this->setPass();
+    // Bcrypt password.
+    $hash = password_hash($pass, PASSWORD_BCRYPT);
+    // $hash = "docker run ghcr.io/wg-easy/wg-easy wgpw $pass";
+    $this->setEnv('PASSWORD_HASH', $hash);
     return 1;
   }
 
