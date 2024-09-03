@@ -5,7 +5,7 @@ services:
     container_name: grafana
     hostname: grafana
     restart: always
-    user: 999:999
+    user: 472:472
     logging:
       options:
         max-file: "3"
