@@ -17,6 +17,8 @@ services:
       - ./includes:/etc/nginx/includes:ro
       - ./default:/etc/nginx/default:ro
       - ./vhosts:/etc/nginx/vhosts:ro
+      - ./proxy:/etc/nginx/proxy:ro
+      - ./logs:/opt/logs:rw
       - ./default/www:/var/www/html:ro
       - /opt/sites:/opt/sites:rw
       # - /opt/apps/certbot/tls/fullchain.pem:/etc/nginx/default/ssl/proxy.crt:ro
