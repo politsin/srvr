@@ -12,9 +12,9 @@ class Step7DockerImages extends Step0Base {
    */
   public function run() : bool {
     $images = [
-      'synstd/php:8.1',
+      'synstd/php:8.3',
       'synstd/s3-dockup:latest',
-      'mariadb:10.5',
+      'mariadb:10.6',
     ];
     foreach ($images as $image) {
       $this->io->writeln("pull: $image");
