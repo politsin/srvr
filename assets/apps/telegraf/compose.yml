@@ -2,6 +2,7 @@ version: "3"
 services:
   telegraf:
     image: telegraf:alpine
+    user: telegraf:115
     hostname: telegraf
     container_name: telegraf
     restart: always
