@@ -30,5 +30,6 @@ services:
       PING: $PING
     volumes:
       - ./etc/telegraf.conf:/etc/telegraf/telegraf.conf:ro
+      - /opt/docker-proxy/logs:/opt/docker-proxy/logs:ro
       - /var/run/docker.sock:/var/run/docker.sock
       - /:/hostfs:ro
