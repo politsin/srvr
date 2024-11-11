@@ -1,13 +1,20 @@
-version: "3"
 services:
   influx:
-    image: influxdb:2.7
+    image: influxdb:alpine
+    user: 999:999
     hostname: influx
     container_name: influx
     restart: always
     environment:
-      TLS_KEY: /tls/private.pem
-      TLS_CERT: /tls/fullchain.pem
+      INFLUXD_TLS_KEY: /tls/private.pem
+      INFLUXD_TLS_CERT: /tls/fullchain.pem
+      INFLUXD_SESSION_LENGTH: 31536000
+      DOCKER_INFLUXDB_INIT_MODE: setup
+      DOCKER_INFLUXDB_INIT_USERNAME: $USERNAME
+      DOCKER_INFLUXDB_INIT_PASSWORD: $PASSWORD
+      DOCKER_INFLUXDB_INIT_ORG:  $ORG
+      DOCKER_INFLUXDB_INIT_BUCKET:  $BUCKET
+      DOCKER_INFLUXDB_INIT_ADMIN_TOKEN:  $ADMIN_TOKEN
     logging:
       options:
         max-file: "3"
@@ -15,8 +22,7 @@ services:
     ports:
       - 18086:8086
     volumes:
-      - ./db:/var/lib/influxdb2
       - ./etc:/etc/influxdb2
-      - ./entrypoint.sh:/entrypoint.sh
+      - ./db:/var/lib/influxdb2
       - /opt/apps/certbot/tls/private.pem:/tls/private.pem
       - /opt/apps/certbot/tls/fullchain.pem:/tls/fullchain.pem
