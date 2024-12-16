@@ -34,7 +34,7 @@ class ArchArm extends Linux {
       // 'apt install lm-sensors i2c-tools',
       "apt install php-mbstring php{$php}-gmp -y --no-install-recommends",
       // 'pecl install dio',
-      "pecl install channel://pecl.php.net/dio-{$dio}",
+      "pecl install channel://pecl.php.net/dio-{$this->dio}",
       "echo 'extension=dio.so' > /etc/php/{$php}/mods-available/dio.ini",
       "ln -s /etc/php/{$php}/mods-available/dio.ini /etc/php/{$php}/cli/conf.d/20-dio.ini",
   ]  ;
