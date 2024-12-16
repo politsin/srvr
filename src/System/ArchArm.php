@@ -28,6 +28,7 @@ class ArchArm extends Linux {
    * Commands.
    */
   public function getCommands() : array {
+    $version = explode('.', PHP_VERSION);
     $php ="{$version[0]}.{$version[1]}";
     $extras =[
       // 'apt install lm-sensors i2c-tools',
