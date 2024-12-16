@@ -38,7 +38,7 @@ class ArchArm extends Linux {
       "echo 'extension=dio.so' > /etc/php/{$php}/mods-available/dio.ini",
       "ln -s /etc/php/{$php}/mods-available/dio.ini /etc/php/{$php}/cli/conf.d/20-dio.ini",
   ]  ;
-    return $this->extras;
+    return $extras;
   }
 
 }
