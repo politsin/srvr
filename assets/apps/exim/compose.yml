@@ -8,11 +8,13 @@ services:
     ports:
       - "25:25"
       - "465:465"
+      - "587:587"
     logging:
       options:
         max-file: "3"
         max-size: "50m"
     volumes:
       - ./etc/exim.conf:/etc/exim/exim.conf:ro
+      - ./etc/passwd:/etc/exim/passwd:ro
       - ./log:/var/log/exim
       - ./tls:/etc/tls:ro
