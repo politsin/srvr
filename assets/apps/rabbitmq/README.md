@@ -12,7 +12,7 @@
 - Напишите что-нибудь уникальное в ./etc/.erlang.cookie
   - TODO: перенести этот функционал в ./start.sh
 - Задайте `default_user` и `default_pass` в `./etc/rabbitmq/rabbitmq.conf`
-- Задайте hostname в `compose.yml`
+- Задайте hostname в `compose.yaml`
 - `./start.sh`
 
 ## Info
