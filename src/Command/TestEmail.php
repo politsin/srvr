@@ -21,7 +21,7 @@ class TestEmail extends Command {
   /**
    * Config.
    */
-  protected function configure() {
+  protected function configure(): void {
     $this
       ->setName('test-mail')
       ->setDescription('Email test')
@@ -31,7 +31,7 @@ class TestEmail extends Command {
   /**
    * Exec.
    */
-  protected function execute(InputInterface $input, OutputInterface $output) {
+  protected function execute(InputInterface $input, OutputInterface $output): int {
     $this->output = $output;
     $this->io = new SymfonyStyle($input, $output);
     $this->io->title('Email Test');

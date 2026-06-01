@@ -20,7 +20,7 @@ class SetCron extends Command {
   /**
    * Config.
    */
-  protected function configure() {
+  protected function configure(): void {
     $this
       ->setName('setcron')
       ->setDescription('set cron, KO');
@@ -29,7 +29,7 @@ class SetCron extends Command {
   /**
    * Exec.
    */
-  protected function execute(InputInterface $input, OutputInterface $output) {
+  protected function execute(InputInterface $input, OutputInterface $output): int {
     $this->output = $output;
     $this->io = new SymfonyStyle($input, $output);
     $this->io->title('Set Cron');

@@ -23,7 +23,7 @@ class Check extends Command {
   /**
    * Config.
    */
-  protected function configure() {
+  protected function configure(): void {
     $this
       ->setName('check')
       ->setDescription('Check system');
@@ -32,7 +32,7 @@ class Check extends Command {
   /**
    * Exec.
    */
-  protected function execute(InputInterface $input, OutputInterface $output) {
+  protected function execute(InputInterface $input, OutputInterface $output): int {
     $this->output = $output;
     $this->io = new SymfonyStyle($input, $output);
     $this->io->title('Check');

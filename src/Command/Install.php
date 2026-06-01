@@ -7,6 +7,7 @@ use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Style\SymfonyStyle;
+use function Laravel\Prompts\multiselect;
 
 /**
  * Echo.
@@ -21,7 +22,7 @@ class Install extends Command {
   /**
    * Config.
    */
-  protected function configure() {
+  protected function configure(): void {
     // @todo
     // docker plugin install elastic/elastic-logging-plugin:8.5.3
     // x.
@@ -33,7 +34,7 @@ class Install extends Command {
   /**
    * Exec.
    */
-  protected function execute(InputInterface $input, OutputInterface $output) {
+  protected function execute(InputInterface $input, OutputInterface $output): int {
     $this->output = $output;
     $this->io = new SymfonyStyle($input, $output);
     $this->io->title('Install');
@@ -85,19 +86,20 @@ class Install extends Command {
       ...$help,
     ];
     ksort($choises);
-    $user = $this->io->choice('Select steps, example: 4,7,8', array_values($choises), NULL, TRUE);
-    if (in_array($installText, $user)) {
+    $selectedKeys = multiselect(
+      label: 'Select steps',
+      options: $choises,
+      scroll: 15,
+      hint: '↑↓ — навигация, пробел — выбор, Enter — подтвердить',
+    );
+    if (in_array('=', $selectedKeys, TRUE)) {
       $this->io->warning('Full install selected');
       return $install;
     }
-    elseif (!empty($user)) {
-      foreach ($choises as $key => $value) {
-        if (!in_array($value, $user)) {
-          unset($choises[$key]);
-        }
-      }
+    if (empty($selectedKeys)) {
+      return [];
     }
-    return $choises;
+    return array_intersect_key($choises, array_flip($selectedKeys));
   }
 
   /**

@@ -8,6 +8,7 @@ use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Style\SymfonyStyle;
 use Symfony\Component\Process\Exception\ProcessFailedException;
 use Symfony\Component\Process\Process;
+use function Laravel\Prompts\multiselect;
 
 /**
  * Echo.
@@ -22,7 +23,7 @@ class SetApp extends Command {
   /**
    * Config.
    */
-  protected function configure() {
+  protected function configure(): void {
     $this
       ->setName('setapp')
       ->setDescription('set app, KO');
@@ -31,13 +32,18 @@ class SetApp extends Command {
   /**
    * Exec.
    */
-  protected function execute(InputInterface $input, OutputInterface $output) {
+  protected function execute(InputInterface $input, OutputInterface $output): int {
     $this->output = $output;
     $this->io = new SymfonyStyle($input, $output);
     $this->io->title('Set App');
     $this->ask();
-    $user = $this->io->choice('Select apps, example: 4,7,8', array_values($this->apps()), NULL, TRUE);
-    $apps = $this->apps($user);
+    $selectedKeys = multiselect(
+      label: 'Select apps',
+      options: $this->apps(),
+      scroll: 15,
+      hint: '↑↓ — навигация, пробел — выбор, Enter — подтвердить',
+    );
+    $apps = $this->apps($selectedKeys);
 
     foreach ($apps as $key => $app) {
       $step = "Srvr\App\\" . $key;
@@ -50,7 +56,7 @@ class SetApp extends Command {
   /**
    * Available apps.
    */
-  private function apps(array $user = []) : array {
+  private function apps(array $selectedKeys = []) : array {
     // @todo cron!
     // certbot - cron, nginx
     // elastic - connect kibana
@@ -77,13 +83,8 @@ class SetApp extends Command {
       'AppTelegraf' => 'telegraf - metrics',
       'AppWireGuard' => 'wireguard - vpn',
     ];
-    // Filter apps from user input.
-    if (!empty($user)) {
-      foreach ($apps as $key => $value) {
-        if (!in_array($value, $user)) {
-          unset($apps[$key]);
-        }
-      }
+    if (!empty($selectedKeys)) {
+      $apps = array_intersect_key($apps, array_flip($selectedKeys));
     }
     return $apps;
   }
