@@ -35,4 +35,4 @@ else
 fi
 
 cd /opt/docker-rest
-docker-compose up -d
+docker compose up -d

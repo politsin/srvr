@@ -42,7 +42,7 @@ volumes:
 - telegraf
 - log-rotate для docker-proxy
 
-## Что может поменяться в docker-compose:
+## Что может поменяться в compose.yml:
 
 - Stage / Prod `--staging`
 - Всегда обнволять `--force-renewal`

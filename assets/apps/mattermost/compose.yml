@@ -1,4 +1,3 @@
-version: "3"
 services:
   mattermost:
     image: synstd/mattermost

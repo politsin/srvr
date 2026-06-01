@@ -1,4 +1,3 @@
-version: "3"
 services:
   socks5:
     image: cooolin/socks5

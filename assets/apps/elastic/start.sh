@@ -2,4 +2,4 @@
 
 cd /opt/apps/elastic
 
-docker-compose up -d
+docker compose up -d

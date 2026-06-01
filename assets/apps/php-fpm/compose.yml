@@ -1,4 +1,3 @@
-version: "3"
 services:
   php-fpm:
     image: synstd/php:8.1

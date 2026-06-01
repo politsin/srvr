@@ -17,4 +17,4 @@ fi
 # chown -R 100:100 ./tls/*
 
 # cd {{ path }}
-docker-compose up -d
+docker compose up -d

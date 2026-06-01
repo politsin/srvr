@@ -1,4 +1,3 @@
-version: "3"
 services:
   exim:
     image: synstd/exim:latest

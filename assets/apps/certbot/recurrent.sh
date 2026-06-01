@@ -11,5 +11,5 @@ fi
   chown -R 999:999 ./tls/private.pem
   chown -R 999:999 ./tls/fullchain.pem
   sed -i -e 's/# - \/opt\/apps\/certbot/- \/opt\/apps\/certbot/g' /opt/docker-proxy/compose.yml
-  cd /opt/docker-proxy && docker-compose up -d
+  cd /opt/docker-proxy && docker compose up -d
 echo "$HOST_NAME"

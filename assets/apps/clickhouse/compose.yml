@@ -1,4 +1,3 @@
-version: "3"
 services:
   clickhouse:
     image: clickhouse/clickhouse-server:latest-alpine

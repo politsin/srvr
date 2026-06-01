@@ -18,4 +18,4 @@ else
   echo "$KEYS done."
 fi
 
-docker-compose up -d
+docker compose up -d

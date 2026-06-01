@@ -1,7 +1,7 @@
 #!/bin/bash
 
-# docker stop certbot && docker rm certbot && docker-compose up certbot
-docker-compose up -d
+# docker stop certbot && docker rm certbot && docker compose up certbot
+docker compose up -d
 
 # Crontab.
 command="/usr/bin/docker start certbot -a > /opt/apps/certbot/log/cron.log"

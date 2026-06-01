@@ -1,4 +1,4 @@
 #!/bin/bash
 
 # cd {path}
-docker-compose up -d
+docker compose up -d
